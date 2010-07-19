@@ -1,4 +1,6 @@
-Although ActiveJDBC has advanced features, 
+<wiki:toc max_depth="1" />
+
+Although ActiveJDBC has advanced features, simple things are very easy. This page shows simplest cases of DB access with ActiveJDBC.
 
 = Create a table =
 This is an SQL statement to create a table (MySQL used for this example):
