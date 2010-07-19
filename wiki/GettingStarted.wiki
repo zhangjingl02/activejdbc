@@ -64,10 +64,10 @@ Base is a utility class that allows to perform some basic (hence the name) JDBC 
 
 =Create a new record =
 {{{
-        Employee e = new Employee();
-        e.set("first_name", "John");
-        e.set("last_name", "Doe");
-        e.saveIt();
+Employee e = new Employee();
+e.set("first_name", "John");
+e.set("last_name", "Doe");
+e.saveIt();
 }}}
 
 I hope this is self-explanatory. ActiveJDBC models somewhat behave like maps. There are no setters or getters. You can still write them if you like. 
@@ -77,3 +77,36 @@ I hope this is self-explanatory. ActiveJDBC models somewhat behave like maps. Th
 Employee e = Employee.findFirst("first_name = ?", "John");
 }}}
 This line will find an instance of Employee (conditionally), if one exists, or null if one does not exist.
+
+=Finding some records=
+{{{
+List<Employee> employees = Employee.where("first_name = ?", "John");
+}}}
+
+=Updating a record=
+This snippet should also be self-explanatory:
+{{{
+Employee e = Employee.findFirst("first_name = ?", "John");
+e.set("last_name", "Steinbeck").saveIt();
+}}}
+
+=Deleting a record=
+{{{
+Employee e = Employee.findFirst("first_name = ?", "John");
+e.delete();
+}}}
+
+=Deleting all records=
+{{{
+Employee.deleteAll();
+}}}
+
+=Selecting all records=
+{{{
+List<Employee> employees = Employee.findAll();
+}}}
+
+=Conclusion=
+I hope this quick introduction provides enough information to get started. It also shows how simple ActiveJDBC APIs are. The project has many advanced features, such as automatic recognition of associations, caching, validations, polymorphic associations, etc. The examples on this page can be found and executed in the included Maven project here: https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
+
+Enjoy
