@@ -1,4 +1,4 @@
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 
 Although ActiveJDBC has advanced features, simple things are very easy. This page shows simplest cases of DB access with ActiveJDBC.
 
