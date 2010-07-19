@@ -47,9 +47,33 @@ In the plugins section of the POM, add this:
             </plugin>
 }}}
 
-= Details =
+=Write a model=
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+This is the easiest thing - writing a simple model is usually done with one line of code:
+{{{
+import activejdbc.Model;
+
+public class Employee extends Model {}
+}}}
+
+=Open a connection=
+{{{
+Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+}}}
+Base is a utility class that allows to perform some basic (hence the name) JDBC operations, one of them is opening a connection. The connection object is then attached to the current thread, and can be consumed by any ActiveJDBC API.
+
+=Create a new record =
+{{{
+        Employee e = new Employee();
+        e.set("first_name", "John");
+        e.set("last_name", "Doe");
+        e.saveIt();
+}}}
+
+I hope this is self-explanatory. ActiveJDBC models somewhat behave like maps. There are no setters or getters. You can still write them if you like. 
+
+=Finding a single record=
+{{{
+Employee e = Employee.findFirst("first_name = ?", "John");
+}}}
+This line will find an instance of Employee (conditionally), if one exists, or null if one does not exist.
