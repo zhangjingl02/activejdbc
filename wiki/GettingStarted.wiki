@@ -58,6 +58,8 @@ import activejdbc.Model;
 public class Employee extends Model {}
 }}}
 
+Please, note that the name of a table is "employees" - plural, and the name of a model is "Employee" - singular. ActiveJDBC uses inflections of English language to do conversion of plural and singular forms of words. This of course can be overridden by @Table annotation.
+
 =Open a connection=
 {{{
 Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
