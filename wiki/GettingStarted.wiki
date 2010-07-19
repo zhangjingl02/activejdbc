@@ -14,7 +14,7 @@ CREATE TABLE employees (
 
 =Maven configuration=
 
-==Add ActiveJDBC  dependency:==
+==Add ActiveJDBC  dependency==
 {{{
 
         <dependency>
