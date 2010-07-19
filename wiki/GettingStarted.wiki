@@ -1,0 +1,55 @@
+Although ActiveJDBC has advanced features, 
+
+= Create a table =
+This is an SQL statement to create a table (MySQL used for this example):
+{{{
+CREATE TABLE employees (
+      id  int(11) DEFAULT NULL auto_increment PRIMARY KEY,
+      first_name VARCHAR(56),
+      last_name VARCHAR(56)
+  );
+}}}
+
+=Maven configuration=
+
+==Add ActiveJDBC  dependency:==
+{{{
+
+        <dependency>
+            <groupId>activejdbc</groupId>
+            <artifactId>activejdbc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>opensymphony</groupId>
+                    <artifactId>oscache</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+}}}
+
+The OSCache is excluded because it is not really used in this simple example. In a real project, if query cache is used, the OSCache dependency will be required.
+
+
+==Add ActiveJDBC Instrumentation plugin==
+In the plugins section of the POM, add this:
+{{{
+             <plugin>
+                <groupId>activejdbc</groupId>
+                <artifactId>activejdbc-instrumentation</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals><goal>instrument</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
+}}}
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
