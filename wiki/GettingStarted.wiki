@@ -71,6 +71,8 @@ Please, note that the name of a table is "employees" - plural, and the name of a
 {{{
 Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
 }}}
+
+Replace the values for the ones that make sense for your environment.
 Base is a utility class that allows to perform some basic (hence the name) JDBC operations, one of them is opening a connection. The connection object is then attached to the current thread, and can be consumed by any ActiveJDBC API.
 
 =Create a new record =
