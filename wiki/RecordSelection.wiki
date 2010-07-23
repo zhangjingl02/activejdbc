@@ -1,5 +1,7 @@
 #summary shows how to select records
 
+<wiki:toc max_depth="2" />
+
 = Fluent Interfaces for search =
 The approach for selecting records in ActiveJDBC is based on the [http://en.wikipedia.org/wiki/Fluent_interface Fluent Interfaces] method. 
 
