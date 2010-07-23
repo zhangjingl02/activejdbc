@@ -1,0 +1,72 @@
+#summary shows how to select records
+
+= Fluent Interfaces for search =
+The approach for selecting records in ActiveJDBC is based on the [http://en.wikipedia.org/wiki/Fluent_interface Fluent Interfaces] method. 
+
+==Create table==
+
+{{{
+CREATE TABLE people (
+   id  int(11) DEFAULT NULL auto_increment PRIMARY KEY, 
+   name VARCHAR(56), 
+   last_name VARCHAR(56), 
+   dob DATE, 
+   graduation_date DATE, 
+   created_at DATETIME, 
+   updated_at DATETIME
+   );
+}}}
+
+==Write Model==
+{{{
+public class Person extends Model {}
+}}}
+
+==Simple Search==
+{{{
+List<Person> list = Person.where("name = 'John'");
+}}}
+
+==Parametrized search==
+{{{
+List<Person> list = Person.where("name = ?", "John");
+}}}
+
+==Processing large result sets==
+{{{
+        Person.find("name='John'", new ModelListener<Person>() {
+            public void onModel(Person person) {
+                System.out.println("Found person: " + person);
+            }
+        });
+}}}
+
+==Finding one record==
+{{{
+Person person = Person.findFirst("id = 2");
+//parametrized:
+person = Person.findFirst("id = ?", 2);
+...
+}}}
+
+==Finding all records==
+{{{
+List<Person> list = Person.findAll();
+}}}
+
+==Create and save==
+{{{        
+        Person p = new Person();
+        p.set("name", "Marilyn");
+        p.set("last_name", "Monroe");
+        p.set("dob", "1935-12-06");
+        p.saveIt();
+
+        System.out.println(p.getId());// <== this will print an ID assigned by DB.
+}}}
+
+==Metadata used to check valid attributes==
+{{{
+        Person p = new Person();
+        p.set("NAME1", "Igor"); //<=== this will throw exception    
+}}}
