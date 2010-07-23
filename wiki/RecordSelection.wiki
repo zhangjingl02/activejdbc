@@ -5,6 +5,8 @@ The approach for selecting records in ActiveJDBC is based on the [http://en.wiki
 
 ==Create table==
 
+This is SQL for the DB table (for MySQL)
+
 {{{
 CREATE TABLE people (
    id  int(11) DEFAULT NULL auto_increment PRIMARY KEY, 
@@ -18,6 +20,7 @@ CREATE TABLE people (
 }}}
 
 ==Write Model==
+Simple models are written in one line of code. No need for setters or getters. 
 {{{
 public class Person extends Model {}
 }}}
@@ -69,4 +72,27 @@ List<Person> list = Person.findAll();
 {{{
         Person p = new Person();
         p.set("NAME1", "Igor"); //<=== this will throw exception    
+}}}
+
+==Lookup and save==
+{{{
+        List<Person> list = Person.find("id = 1");
+        Person p = list.get(0);
+        p.set("name", "Igor");
+        p.saveIt();
+}}}
+
+==Get by id==
+{{{
+Person p = Person.findById(1);
+}}}
+
+==Count all records==
+{{{
+long personCount = Person.count();
+}}}
+
+==Conditional count==
+{{{
+long johnCount = Person.count("name = ? ", "John");
 }}}
