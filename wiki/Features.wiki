@@ -1,23 +1,4 @@
-#summary One-sentence summary of this page.
+#summary overview of features
 
-= Fluent Interfaces for search =
-The approach for selecting records in ActiveJDBC is based on the [http://en.wikipedia.org/wiki/Fluent_interface Fluent Interfaces] method. 
-
-==Create table==
-
-{{{
-CREATE TABLE people (
-   id  int(11) DEFAULT NULL auto_increment PRIMARY KEY, 
-   name VARCHAR(56), 
-   last_name VARCHAR(56), 
-   dob DATE, 
-   graduation_date DATE, 
-   created_at DATETIME, 
-   updated_at DATETIME
-   );
-}}}
-
-==Write Model==
-{{{
-public class Person extends Model {}
-}}}
+==Selection of records==
+[RecordSelection]
