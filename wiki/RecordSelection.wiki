@@ -96,3 +96,9 @@ long personCount = Person.count();
 {{{
 long johnCount = Person.count("name = ? ", "John");
 }}}
+
+==Use raw SQL==
+{{{
+List<Book> books = Book.findBySQL("select books.*, address from books, libraries where books.lib_id = libraries.id order by address");
+
+}}}
