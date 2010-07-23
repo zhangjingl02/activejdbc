@@ -1,4 +1,9 @@
 #summary overview of features
-
-==Selection of records==
-[RecordSelection]
+  * [RecordSelection]
+  * [LimitAndSort]
+  * [BatchOperations]
+  * [Validations]
+  * [OneToManyAssociation](including delete with cascade)
+  * [ManyToManyAssociation]
+  * [PolymorphicAccociations]
+  * [AutogenerategFields]
