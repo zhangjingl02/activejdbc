@@ -8,3 +8,6 @@
   * [ManyToManyAssociation]
   * [PolymorphicAccociations]
   * [AutogenerategFields]
+  * [Paginator]
+  * [Caching]
+  * [LifecycleCallbacks]
