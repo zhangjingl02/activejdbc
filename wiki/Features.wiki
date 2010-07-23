@@ -1,6 +1,7 @@
 #summary overview of features
   * [RecordSelection]
   * [LimitAndSort]
+  * [RecordCreation]
   * [BatchOperations]
   * [Validations]
   * [OneToManyAssociation](including delete with cascade)
