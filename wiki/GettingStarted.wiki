@@ -122,4 +122,9 @@ List<Employee> employees = Employee.findAll();
 =Conclusion=
 I hope this quick introduction provides enough information to get started. It also shows how simple ActiveJDBC APIs are. The project has many advanced features, such as automatic recognition of associations, caching, validations, polymorphic associations, etc. The examples on this page can be found and executed in the included Maven project here: https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
 
+Read the [Features] section for a more in depth information on the framework.
+
+
+
+
 Enjoy
