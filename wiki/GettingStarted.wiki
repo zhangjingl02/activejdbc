@@ -3,7 +3,7 @@
 Although ActiveJDBC has advanced features, simple things are very easy. This page shows simplest cases of DB access with ActiveJDBC.
 
 =Create a standard Maven project structure=
-While ActiveJDBC does not have to be used with Maven, this example (as well as ActiveJDBC itself) was buyilt with Maven. To see the project itself, you can check it out from SVN:
+While ActiveJDBC does not have to be used with Maven, this example (as well as ActiveJDBC itself) was built with Maven. To see the project itself, you can check it out from SVN:
 {{{
 svn co https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
 }}}
