@@ -36,7 +36,7 @@ public class User extends Model {}
 }}}
 
 As you can see from the schema, the table ADDRESSES, has a column called {{{user_id}}}. Just because table ADDRESSES has this column, ActiveJDBC assumes that there is a one to many relationship here, and makes special arrangements.
-By doing so, the framework (internally) creates two associations (User has many Address(es) and Adress belongs to User).
+By doing so, the framework (internally) creates two associations (User has many Address(es) and Address belongs to User).
 
 The design of ActiveJDBC tries to make usage of the APIs as clean and concise as possible. 
 
@@ -46,7 +46,7 @@ Nothing can be simpler:
 List<Address> addresses = user.getAll(Address.class);
 }}}
 
-Here the Adress.class needs to be passed in because a model User might have many other relationships with models other than Address.class. 
+Here the Address.class needs to be passed in because a model User might have many other relationships with models other than Address.class. 
 
 
 =How to get Parent=
