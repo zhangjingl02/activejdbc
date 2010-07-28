@@ -6,18 +6,13 @@ ActiveJDBC supports this type of a relationship  in two ways: 1. Inferred and 2.
 =Database schema=
 This is a database schema (for MySQL):
 {{{
-DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 id  int(11) DEFAULT NULL auto_increment PRIMARY KEY, 
 first_name VARCHAR(56), 
 last_name VARCHAR(56), 
 email VARCHAR(56));
 
-INSERT INTO users VALUES(1, 'Marilyn', 'Monroe', 'mmonroe@yahoo.com');
-INSERT INTO users VALUES(2, 'John', 'Doe', 'jdoe@gmail.com');
 
-
-DROP TABLE IF EXISTS addresses;
 CREATE TABLE addresses (
 id  int(11) DEFAULT NULL auto_increment PRIMARY KEY, 
 address1 VARCHAR(56), 
@@ -26,14 +21,6 @@ city VARCHAR(56),
 state VARCHAR(56), 
 zip VARCHAR(56), 
 user_id int(11));
-
-INSERT INTO addresses VALUES(1, '123 Pine St.', 'apt 31', 'Springfield', 'IL', '60606', 1);
-INSERT INTO addresses VALUES(2, '456 Brook St.', 'apt 21', 'Springfield', 'IL', '60606', 1);
-INSERT INTO addresses VALUES(3, '23 Grove St.', 'apt 32', 'Springfield', 'IL', '60606', 1);
-INSERT INTO addresses VALUES(4, '143 Madison St.', 'apt 34', 'Springfield', 'IL', '60606', 2);
-INSERT INTO addresses VALUES(5, '153 Creek St.', 'apt 35', 'Springfield', 'IL', '60606', 2);
-INSERT INTO addresses VALUES(6, '163 Gorge St.', 'apt 36', 'Springfield', 'IL', '60606', 2);
-INSERT INTO addresses VALUES(7, '173 Far Side.', 'apt 37', 'Springfield', 'IL', '60606', 2);
 }}}
 
 =Models=
