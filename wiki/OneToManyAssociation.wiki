@@ -69,7 +69,20 @@ User user = address.parent(User.class);
 }}}
 Here, we have to pass a {{{User.class}}} to indicate which parent type we want. This is because a model could have multiple parents (belong to more than one parent)
 
+=Deleting Parent=
+A simple way to delete a parent is:
+{{{
+User u = ...;
 
+u.delete();
+}}}
+
+If you have a referential integrity in your DB and table ADDRESSES has records associated with this user, then you will get an exception from DB. If you do not have child records, this user will be deleted. If you have records in the ADDRESSES table and no referential integrity constraint, the user will be deleted and you will have orphan records in the ADDRESSES table. In order to delete a user and all it's child records, execute this method:
+{{{
+u.deleteCascade();
+}}}
+
+This method will walk over all parent/child relationships and delete all user and all child records associated with it
 
 =Override Conventions=
 In cases where a surrogate foreign key is already present and has a name that does not follow the ActiveJDBC conventions, you could easily override it like this:
