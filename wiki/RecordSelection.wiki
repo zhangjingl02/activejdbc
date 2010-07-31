@@ -134,3 +134,5 @@ In case, a query is really complicated, you can always resort to raw SQL like th
 List<Book> books = Book.findBySQL("select books.*, address from books, libraries where books.lib_id = libraries.id order by address");
 }}}
 The only requirement to this method is that your select statement should select all columns from a table that this model represents. Since model knows which attributes belong to it, it will pluck them from the result set, and you will have a normal list of models (Book in this case) that are initialized from your query.
+
+Back to [Features].
