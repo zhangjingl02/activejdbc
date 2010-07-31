@@ -152,3 +152,5 @@ The table REGISTRATIONS might have additional data, such as registration type, e
 
 =Conclusion=
 This article showed how to use many to many relationships with ActiveJDBC. The APIs were designed with simplicity and ease of use in mind.
+
+Back to [Features] page.
