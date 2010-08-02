@@ -44,7 +44,7 @@ As you can see, the framework generates the query from SELECT to the WHERE. The 
 {{{
 List<Person> list = Person.where("name = ?", "John");
 }}}
-In this case, the value "John" will be substituted for a question mark. The number of question mark and substitute values is flexible, but must be the same.
+In this case, the value "John" will be substituted for a question mark. The number of question marks and substitute values is flexible, but must be the same.
 
 =Processing large result sets=
 
@@ -71,7 +71,7 @@ This is a method or returning all records from a table, use carefully as this wi
 {{{
 List<Person> list = Person.findAll();
 for(Person p: list){   //<==== this line of code will initiate the actual query to DB
-   SYstem.out.println(p);
+   System.out.println(p);
 }
 }}}
 
