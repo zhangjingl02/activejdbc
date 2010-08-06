@@ -1,3 +1,6 @@
+#summary this page explains how to use one to many associations with ActiveJDBC
+<wiki:toc max_depth="2" />
+
 =Introduction=
 One to many associations are pretty common in relational schemas. Examples are: university has students, library has books, etc. There are two sides to a one to many association, the "parent" *has a* "child" and a "child" *belongs to* "parent". 
 
