@@ -1,3 +1,5 @@
+#summary this page explains how to get started with ActiveJDBC
+
 <wiki:toc max_depth="2" />
 
 Although ActiveJDBC has advanced features, simple things are very easy. This page shows simplest cases of DB access with ActiveJDBC.
