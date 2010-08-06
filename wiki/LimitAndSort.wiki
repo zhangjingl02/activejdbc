@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Often times you do not need an entire resultset from a table. Sometings, you only need a few records, and sometimes you want to page through a resultset. This style of data usage is usually found in web applications. Examples could be paging through a catalog of products.
+Often times you do not need an entire resultset from a table. Sometimes, you only need a few records, and sometimes you want to page through a resultset. This style of data usage is usually found in web applications. Examples could be paging through a catalog of products.
 
 = Limiting Resultsets =
 The "finder" methods, such as {{{find()}}}, {{{findAll()}}} and {{{where()}}} return an instance of a {{{LazyList}}}. This class has a method called {{{limit(int)}}}. This methods will limit a number of results in the resultset when your programs starts to iterate through a list:
@@ -48,7 +48,7 @@ int currentPage = paginator.getCurrentPage();
 
 and for page count like this:
 {{{
-ing pageCount = paginator.getPageCount();
+int pageCount = paginator.getPageCount();
 }}}
 Using this class in a context of a web application makes it trivial to build paging through resultsets on web pages. 
 
