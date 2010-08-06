@@ -1,4 +1,5 @@
-Many to Many Relationships
+#summary explanation on Many to Many associations in ActiveJDBC
+<wiki:toc max_depth="2" />
 
 =Introduction=
 Often times the database-driven applications require many to many relationships. 
