@@ -1,4 +1,5 @@
 #summary How to use transactions with ActiveJDBC
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
@@ -108,3 +109,6 @@ public void onMessage(Message m){
 
 }}}
 In the example above, the container will manage transaction. It will roll back both: the JDBC, as well as JMS transactions. 
+
+
+Back to [Features]
