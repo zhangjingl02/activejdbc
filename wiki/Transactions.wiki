@@ -8,7 +8,7 @@ The goal of AciveJDBC from the ground up was to be a very thin veneer on top of 
 = Basic flow of DB program = 
 In any DB - backed program, you would:
 {{{
-1. open connection
+1. Open connection
 2. Do stuff
 3. Close connection
 }}}
