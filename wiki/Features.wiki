@@ -13,3 +13,4 @@
   * [Caching]
   * [LifecycleCallbacks]
   * [StatisticsReport]
+  * [Logging]
