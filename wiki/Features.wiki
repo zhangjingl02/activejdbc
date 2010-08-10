@@ -12,3 +12,4 @@
   * [Paginator]
   * [Caching]
   * [LifecycleCallbacks]
+  * [StatisticsReport]
