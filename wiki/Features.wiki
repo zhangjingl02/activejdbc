@@ -4,6 +4,7 @@
   * [RecordCreation]
   * [BatchOperations]
   * [Validations]
+  * [Transactions]
   * [OneToManyAssociation]
   * [ManyToManyAssociation]
   * [PolymorphicAccociations]
