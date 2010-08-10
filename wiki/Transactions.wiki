@@ -1,4 +1,4 @@
-#summary How o use transactions with ActiveJDBC
+#summary How to use transactions with ActiveJDBC
 
 = Introduction =
 
