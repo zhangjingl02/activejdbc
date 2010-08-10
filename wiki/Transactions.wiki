@@ -13,7 +13,7 @@ In any DB - backed program, you would:
 3. Close connection
 }}}
 
-Usually in Java there is an explicit connection or a manager object (Connection in JDBC, !EntityManager in JPA, !SessionManager in Hibernate, etc.). Such object is absent in ActiveJDBC. 
+Usually in Java there is an explicit connection or a manager object (Connection in JDBC, !EntityManager in JPA, !SessionManager in Hibernate, etc.). Such an object is absent in ActiveJDBC. 
 
 = Simple ActiveJDBC Example=
 Here is an example of the most basic of the ActiveJDBC applicaitons:
