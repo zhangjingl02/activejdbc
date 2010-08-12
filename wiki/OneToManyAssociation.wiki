@@ -1,4 +1,4 @@
-#summary this page explains how to use one to many associations with ActiveJDBC
+#summary How to use one to many associations with ActiveJDBC
 <wiki:toc max_depth="2" />
 
 =Introduction=
