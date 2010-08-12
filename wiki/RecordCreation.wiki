@@ -86,7 +86,7 @@ Person p = Person.createIt("first_name", "Sam", "last_name", "Margulis", "dob", 
 
 The {{{create()}}} and {{{createIt()}}} method accepts a list of arguments, where names are interleaved with values. This is similar to the varargs setter described above, but also includes semantics of the {{{save()}}} and {{{saveIt()}}} methods.
 
-=No setters getters??? =
+=No setters/getters??? =
 
 Well,no. ActiveJDBC will not provide these, and it will not generate them either. However, you can have them if you like:
 {{{
