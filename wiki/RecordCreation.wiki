@@ -88,7 +88,7 @@ The {{{create()}}} and {{{createIt()}}} method accepts a list of arguments, wher
 
 =No setters/getters??? =
 
-Well,no. ActiveJDBC will not provide these, and it will not generate them either. However, you can have them if you like:
+Well, no. ActiveJDBC will not provide these, and it will not generate them either. However, you can have them if you like:
 {{{
 
 public class Person extends Model{
@@ -98,7 +98,7 @@ public class Person extends Model{
 }
 }}}
 
-Same goes for getters. If you are starting out with ActiveJDBC, I suggest you do not write setters and getters, but rather use the provided methods. After a day or two you will be surprized you ever wrote them before.
+Same goes for getters. If you are starting out with ActiveJDBC, I suggest you do not write setters and getters, but rather use the provided methods. After a day or two you will be surprised you ever wrote them before.
 
 
 Back to [Features]
