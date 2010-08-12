@@ -1,5 +1,6 @@
-#summary One-sentence summary of this page.
+#summary ActiveJDBC: How to create new records
 
+<wiki:toc max_depth="2" />
 = Introduction =
 There are many ways to create new records with ActiveJDBC. Let's explore them
 
@@ -84,5 +85,20 @@ Person p = Person.createIt("first_name", "Sam", "last_name", "Margulis", "dob", 
 }}}
 
 The {{{create()}}} and {{{createIt()}}} method accepts a list of arguments, where names are interleaved with values. This is similar to the varargs setter described above, but also includes semantics of the {{{save()}}} and {{{saveIt()}}} methods.
+
+=No setters getters??? =
+
+Well,no. ActiveJDBC will not provide these, and it will not generate them either. However, you can have them if you like:
+{{{
+
+public class Person extends Model{
+   public void setFirstName(String firstName){
+      set("first_name", firstName);
+   }
+}
+}}}
+
+Same goes for getters. If you are starting out with ActiveJDBC, I suggest you do not write setters and getters, but rather use the provided methods. After a day or two you will be surprized you ever wrote them before.
+
 
 Back to [Features]
