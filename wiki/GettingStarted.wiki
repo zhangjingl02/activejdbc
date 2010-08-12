@@ -4,12 +4,21 @@
 
 Although ActiveJDBC has advanced features, simple things are very easy. This page shows simplest cases of DB access with ActiveJDBC.
 
+=Pre-requisite=
+
+   * Java (obvious)
+   * Maven
+
+You have to have ActiveJDBC already installed on your computer. This is done (currently) by building it from sources.
+See "How to build" section on main page: [http://code.google.com/p/activejdbc/].
+
 =Create a standard Maven project structure=
 While ActiveJDBC does not have to be used with Maven, this example (as well as ActiveJDBC itself) was built with Maven. To see the project itself, you can check it out from SVN:
 {{{
 svn co https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
 }}}
 
+The best way is to check out this project and start playing with it. Take a look at the {{{run.sh}}} script at the root of this example project.
 
 = Create a table =
 This is an SQL statement to create a table (MySQL used for this example):
