@@ -7,7 +7,7 @@ There are many ways to create new records with ActiveJDBC. Let's explore them
 =Use setter method=
 {{{
 Person p = new Person();
-p.set("name", "John");
+p.set("first_name", "John");
 p.set("last_name", "Doe");
 p.set("dob", "1935-12-06");
 p.saveIt();
@@ -39,7 +39,7 @@ p.set("name", "John").set("last_name", "Doe").set("dob", "1935-12-06").saveIt();
 
 ..or make it shorter:
 {{{
-new Person().set("name", "Marilyn").set("last_name", "Monroe").set("dob", "1935-12-06").saveIt();
+new Person().set("first_name", "Marilyn").set("last_name", "Monroe").set("dob", "1935-12-06").saveIt();
 }}}
 
 =Batching names an values=
