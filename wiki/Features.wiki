@@ -12,5 +12,5 @@
   * [Caching]
   * [SurrogatePrimaryKeys]
   * [LifecycleCallbacks]
-  * [StatisticsReport]
+  * [StatisticsReporting]
   * [Logging]
