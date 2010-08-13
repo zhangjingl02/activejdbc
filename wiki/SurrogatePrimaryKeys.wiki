@@ -94,8 +94,8 @@ public class Person extends Model{}
 The usage code, behavior and expectations will be exactly the same with this strategy. AS you can see, this seems to be simpler than using triggers, but it has a drawback. Since the same sequence will be used across multiple tables, the number values in a single table could (will) be out of sequence. But.. since this is a surrogate key anyway, it does not matter.
 
 
-Back to [Features]
-
-
 =PosgreSQL usage=
 to be continued...
+
+
+Back to [Features]
