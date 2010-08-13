@@ -85,7 +85,7 @@ ALTER TABLE people ADD CONSTRAINT people_pk PRIMARY KEY ( id )
 
 CREATE SEQUENCE main_seq START WITH 1 INCREMENT BY 1
 }}}
-When defining a model, however you will need to provide this piece of information to all models where you intend to use this sequence:
+When defining a model, however, you will need to provide this piece of information to all models where you intend to use this sequence:
 {{{
 @IdGenerator("main_seq.nextVal")
 public class Person extends Model{}
