@@ -34,7 +34,7 @@ Sometimes this style of programming is called
 
 = Paginating for the web =
 
-Although limit, offset and orderBy themselves are quite simple and powerful methods, ActiveJDBC also provides a convenience class called {{{Paginator}}} especially designed for web applications:
+Although `limit`, `offset` and `orderBy` themselves are quite simple and powerful methods, ActiveJDBC also provides a convenience class called {{{Paginator}}} especially designed for web applications:
 
 {{{
 Paginator p = new Paginator(Page.class, 10, "description like ?", "%Java%").orderBy("created_at desc");
