@@ -62,7 +62,7 @@ Here, we have to pass a {{{User.class}}} to indicate which parent type we want. 
 =Deleting Parent=
 A simple way to delete a parent is:
 {{{
-User u = ...;
+User u = address.parent(User.class);
 
 u.delete();
 }}}
