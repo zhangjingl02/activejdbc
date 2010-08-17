@@ -43,13 +43,48 @@ Message overriding is easy with the help of a method `message()`:
 {{{
 public class Person extends Model {
     static{
-        validatePresenceOf("first_name").message("Please, provide your first name.");
+        validatePresenceOf("first_name", "last_name").message("this value is missing");
     }    
 }
 }}}
 
 =Customized messages for different attributes=
 
+You can call method `validatePresenceOf().message()` multiple times, providing different attribute names as well as different messages:
 
+{{{
+public class Person extends Model {
+    static{
+        validatePresenceOf("first_name").message("Please, provide your first name");
+        validatePresenceOf("last_name").message("Please, provide your last name");
+    }    
+}
+}}}
 
-= Details =
+=Validation of numericality=
+ActiveJDBC like ActiveRecord also provides other validators, for instance:
+{{{
+public class Account extends Model {
+    static{
+        validateNumericalityOf("amount", "account", "total");
+    }
+}
+}}}
+
+Like the `validatePresenseOf()`, this method also takes in a vararg of strings, which allows to specify a list of attribute names that should have a numeric format. 
+
+=Validation of numericality with additional properties=
+
+When checking numericality of an attribute, you can have a finer control, including specifying that it could be `null`, providing a range and a custom  message. In fact, all validators allow for custom message.
+
+{{{
+public class Account extends Model {
+    static{
+        validateNumericalityOf("total")
+                .allowNull(true).greaterThan(0)
+                .lessThan(100).onlyInteger()
+                .message("incorrect 'total'");
+    }
+}
+}}}
+Again, ActiveJDBC is using [http://martinfowler.com/bliki/FluentInterface.html Fluent Interfaces] technique, as in many other places. 
