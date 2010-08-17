@@ -13,4 +13,5 @@
   * [SurrogatePrimaryKeys]
   * [LifecycleCallbacks]
   * [StatisticsReporting]
+  * [LazyAndEager]
   * [Logging]
