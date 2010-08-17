@@ -1,5 +1,5 @@
 #summary How to use and what are polymorphic associations
-ki:toc max_depth="2" />
+<wiki:toc max_depth="2" />
 
 = Introduction =
 ActiveJDBC polymorphic associations are similar to !ActiveRecord polymorphic associations. YOu can use PM in cases when you have several one to many relationships that you could aggregate because for all the parents, the children are similar. 
