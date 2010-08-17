@@ -87,4 +87,4 @@ Product p = t.parent(Product.class);
 Polymorphic association is a simple mechanism, but the provide a nice pattern for cases that happen much too often in projects. Setting them up and using with ActiveJDBC is so trivial, even a cavemen can do it :)
 
 
-Back to [Features]
+Back to [Features].
