@@ -1,0 +1,44 @@
+#summary ActiveJDBC Caching
+
+= Introduction =
+
+Caching is an integral part of every major system, It improves performance, reduces IO and makes overall user experience more pleasurable. Caching in ActiveJDBC works on the level of query and creation of model instances. For instance, the call:
+
+{{{
+List<Book> warBooks = Book.where("title like '%war%'");
+}}}
+might call into DB, or a result can some from cache, depending how cache and specifically model `Book` was configured
+
+=Cache annotation=
+ActiveJDBC provides annotation to specify queries against which tables will be cached:
+
+{{{
+@Cached
+public class Person extends Model{}
+}}}
+
+As in other cases, this is a declaration that marks a model as "cachable". If you enable logging (by providing a system property `activejdbc.log`), you will see extensive output from ActiveJDBC, similar to this:
+{{{
+3076 [main] INFO activejdbc.DB - Query: "SELECT * FROM libraries WHERE id = ?", with parameters: [1], took: 0 milliseconds
+3076 [main] INFO activejdbc.cache.QueryCache - HIT, "SELECT * FROM libraries WHERE id = ?", with parameters: [1]
+3077 [main] INFO activejdbc.DB - Query: "INSERT INTO libraries (address, state, city) VALUES (?, ?, ?)", with parameters: [123 Pirate Street, CA, Bloomington], took: 1 milliseconds
+3077 [main] INFO activejdbc.cache.QueryCache - table cache purged for: libraries
+3077 [main] INFO activejdbc.cache.QueryCache - table cache purged for: books
+3077 [main] INFO activejdbc.cache.QueryCache - MISS, "SELECT * FROM libraries WHERE id = ?", with parameters: [1]
+3078 [main] INFO activejdbc.DB - Query: "SELECT * FROM libraries WHERE id = ?", with parameters: [1], took: 0 milliseconds
+}}}
+
+=Cache purging=
+
+=Cache provider=
+
+=OSCache configuration=
+=What to cache=
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
