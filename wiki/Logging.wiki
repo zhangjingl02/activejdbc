@@ -11,6 +11,17 @@ ActiveJDBC uses a system property `activejdbc.log` for specifying logging. The v
   * blank - in this case, ActiveJDBC will spit out all available information - every SQL statement, cache hits/misses, cache purge events, etc.
   * regular expression - in this case, ActiveJDBC will only log statements that match a regular expression
 
+If you just want to see all messages from ActiveJDBC, start your program like this:
+
+{{{
+java -Dactivejdbc.log com.acme.YourProgram
+}}}
+
+If you only want to see select messages, you can provide an expression:
+{{{
+java -Dactivejdbc.log=select.* com.acme.YourProgram
+}}}
+
 =Dynamically change log output=
 Use this call:
 {{{
