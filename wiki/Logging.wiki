@@ -1,0 +1,22 @@
+#summary Logging configuration
+
+= Introduction =
+
+ActiveJDBC uses [http://www.slf4j.org/ SLF4J] logging facade. Please, refer to SLF4J documentation to see how to configure it with Log4J, Java Logging, Apache logging, etc. 
+
+
+=ActiveJDBC logging configuration=
+
+ActiveJDBC uses a system property `activejdbc.log` for specifying logging. The value of this property can be:
+  * blank - in this case, ActiveJDBC will spit out all available information - every SQL statement, cache hits/misses, cache purge events, etc.
+  * regular expression - in this case, ActiveJDBC will only log statements that match a regular expression
+
+=Dynamically change log output=
+Use this call:
+{{{
+activejdbc.LogFilter.setLogExpression("regular expression goes here");
+}}}
+to dynamically change ActiveJDBC log output at run time. 
+
+
+back to [Features]
