@@ -62,7 +62,7 @@ public void savePerson(){
    if(p.save()){
       //render success page
    }else{
-      renderSamePageWithErrors(p.errors());
+      renderSamePageWithErrors(params, p.errors());// this is web framework specific, only pseudo-code
    }
 }
 }}}
