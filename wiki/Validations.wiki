@@ -48,6 +48,25 @@ public class Person extends Model {
 }
 }}}
 
+=Usage in a web application=
+This is a pseudo-code of a web application controller where a form was submitted:
+
+{{{
+
+public void savePerson(){
+   Map params = ... // this is a map of HTML form submitted from a web page
+   Person p = Person();
+   p.fromMap(params); //The model will only pluck values that correspond to it's attribute names
+   
+   if(p.save()){
+      //render success page
+   }else{
+      renderSamePageWithErrors(p.errors());
+   }
+}
+}}}
+As you can see, it is trivial to integrate ActiveJDBC into a web application.
+
 =Customized messages for different attributes=
 
 You can call method `validatePresenceOf().message()` multiple times, providing different attribute names as well as different messages:
@@ -88,3 +107,60 @@ public class Account extends Model {
 }
 }}}
 Again, ActiveJDBC is using [http://martinfowler.com/bliki/FluentInterface.html Fluent Interfaces] technique, as in many other places. 
+
+=Range validator=
+Besides numeric validation, there is also a specific range validator:
+{{{
+public class Temperature extends Model {
+    static{
+        int min = 0, max = 100;
+        validateRange("temp", min, max).message("temperature cannot be less than " + min + " or more than " + max);
+    }
+}
+}}}
+Although you can use either numeric or range validators for range, in some cases range validator will have a more concise syntax than numeric one.
+
+
+=Email validator=
+The email validator exists to check a proper format of email (it does not check if email actually exists!)
+{{{
+
+public class User extends Model {
+    static{
+        validateEmailOf("email");
+    }
+}
+}}}
+
+=Regular expressions validator=
+You can probably guess, that the email validator is a special case of a regular expression validator:
+
+{{{
+public class User extends Model {
+    static{
+        validateRegexpOf("email", "\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+    }
+}
+}}}
+This validator provides enough freedom to developers who know regular expressions well :)
+
+=Custom validator=
+If all else fails, and ActiveJDBC does not provide a validator you want, you can implement a Validator interface:
+{{{
+public interface Validator {
+    void validate(Model m);
+    void setMessage(String message);
+}
+}}}
+
+and register it with this call:
+{{{
+List<Validator> validators = ...
+activejdbc.Registry.instance().addValidators(User.class, validators);
+}}}
+
+=Conclusion=
+ActiveJDBC provides a number of built in validators and also allows to register custom validators.
+
+
+back to [Features]
