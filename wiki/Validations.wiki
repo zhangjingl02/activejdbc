@@ -1,7 +1,7 @@
 #summary ActiveJDBC Validation framework
 
 = Introduction =
-ActiveJDBC has a validation framework that is somewhat reminiscent of !ActiveRecord validation. The validation rules in ActiveJDBC are described in a model definition in a declarative way and are self-explanatory
+ActiveJDBC has a validation framework that is somewhat reminiscent of !ActiveRecord validation. The validation rules in ActiveJDBC are described in a model definition in a declarative way:
 
 =Validation of attribute presence=
 In order to add any validation, a model will declare  a static bloc at the top of a class definition, and invoke all validation declaration inside this block:
