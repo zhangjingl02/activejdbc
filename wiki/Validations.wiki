@@ -17,9 +17,9 @@ The method `Model.validatePresenceOf()` takes a vararg of strings, which allows 
 
 =Triggering of validation=
 triggering of validations happens under three conditions:
-  * Call `Model.validate()` method
-  * Call `Model.save()` method
-  * Call `Model.saveIt()` method
+  * Call `Model.validate()` method (will not throw exception)
+  * Call `Model.save()` method (will not throw exception)
+  * Call `Model.saveIt()` method (will throw exception)
 
 The semantic difference of `save()` and `saveIt()` methods is described on the [RecordCreation] page.
 
