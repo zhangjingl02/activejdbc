@@ -80,7 +80,7 @@ In cases where a surrogate foreign key is already present and has a name that do
 @BelongsTo(parent = User.class, foreignKeyName = "usr_id")
 public class Address extends Model {}
 }}}
-The !@BelongsTo annotation will ensure that API on both ends will work. ActiveJDBC does not have annotation !@HasMany, since I believe this would be redundant. 
+The @!BelongsTo annotation will ensure that API on both ends will work. ActiveJDBC does not have annotation @!HasMany, since I believe this would be redundant. 
 
 =Foreign Key=
 The Foreign Key in the ADDRESSES table does not have to be a real Foreign Key constraint. ActiveJDBC(much like ActiveRecord) does not check for it's presence. As long as there is a column named according to this convention, ActiveJDBC assumes that there is a relationship. It does not hurt to have the actual constraint in the DB if you are using other means of accessing data. 
