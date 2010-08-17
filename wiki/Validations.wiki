@@ -1,4 +1,5 @@
 #summary ActiveJDBC Validation framework
+<wiki:toc max_depth="2" />
 
 = Introduction =
 ActiveJDBC has a validation framework that is somewhat reminiscent of !ActiveRecord validation. The validation rules in ActiveJDBC are described in a model definition in a declarative way:
