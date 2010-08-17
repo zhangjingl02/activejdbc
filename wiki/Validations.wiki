@@ -20,6 +20,7 @@ triggering of validations happens under three conditions:
   * Call `Model.validate()` method (will not throw exception)
   * Call `Model.save()` method (will not throw exception)
   * Call `Model.saveIt()` method (will throw exception)
+  * Call `Model.createIt()` method (will throw exception)
 
 The semantic difference of `save()` and `saveIt()` methods is described on the [RecordCreation] page.
 
