@@ -1,5 +1,5 @@
 #summary ActiveJDBC Caching
-
+<wiki:toc max_depth="2" />
 = Introduction =
 
 Caching is an integral part of every major system, It improves performance, reduces IO and makes overall user experience more pleasurable. Caching in ActiveJDBC works on the level of query and creation of model instances. For instance, the call:
