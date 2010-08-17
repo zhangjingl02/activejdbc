@@ -62,7 +62,7 @@ public class Person extends Model {
 }}}
 
 =Validation of numericality=
-ActiveJDBC like ActiveRecord also provides other validators, for instance:
+ActiveJDBC like !ActiveRecord also provides other validators, for instance:
 {{{
 public class Account extends Model {
     static{
