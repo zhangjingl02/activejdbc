@@ -35,7 +35,7 @@ In the example above, the Model will detect if this value is type Clob, and will
 
 =Clobs in cached models=
 
-ActiveJDBC provides a mechanism of caching. This means that entire resultsets of models filled with data will be cached, and potentially survive in memory for some time. Clobs themselves would need an original JDBC `Connection` object to read the data from (that was not closed yet). Unfortunately, there is no guarantee, that these objects are still around if you are accessing a cached list of objects from a Cache Manager. 
+ActiveJDBC provides a mechanism of [Caching]. This means that entire resultsets of models filled with data will be cached, and potentially survive in memory for some time. Clobs themselves would need an original JDBC `Connection` object to read the data from (that was not closed yet). Unfortunately, there is no guarantee, that these objects are still around if you are accessing a cached list of objects from a Cache Manager. 
 
 ActiveJDBC then makes a distinction between cached models and the ones that are not cached. In cases of regular models, it does not do anything special because it assumes that the Clobs are read immediately after models are selected and hydrated. 
 
