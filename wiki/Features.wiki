@@ -1,4 +1,4 @@
-#summary overview of features
+#summary ActiveJDBC features, TOC
   * [RecordSelection]
   * [LimitAndSort]
   * [RecordCreation]
