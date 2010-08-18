@@ -8,9 +8,7 @@ Although ActiveJDBC has advanced features, simple things are very easy. This pag
 
    * Java (obvious)
    * Maven
-
-You have to have ActiveJDBC already installed on your computer. This is done (currently) by building it from sources.
-See "How to build" section on main page: [http://code.google.com/p/activejdbc/].
+   * ActiveJDBC already installed on your computer. This is done (currently) by building it from sources. See "How to build" section on main page: [http://code.google.com/p/activejdbc/].
 
 =Create a standard Maven project structure=
 While ActiveJDBC does not have to be used with Maven, this example (as well as ActiveJDBC itself) was built with Maven. To see the project itself, you can check it out from SVN:
