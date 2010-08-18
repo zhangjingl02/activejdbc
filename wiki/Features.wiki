@@ -13,6 +13,6 @@
   * [ClobSupportAndCaching]
   * [SurrogatePrimaryKeys]
   * [LifecycleCallbacks]
-  * [StatisticsReporting]
-  * [LazyAndEager]
+  * [StatisticsReporting] - to be added
+  * [LazyAndEager] - to be added
   * [Logging]
