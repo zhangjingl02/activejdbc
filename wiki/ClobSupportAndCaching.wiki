@@ -25,7 +25,7 @@ Clob c = (Clob)a.get("content");
 }}}
 
 =Convenient method for reading from a Clob=
-Since ActiveJDBC does not do implicit data conversions, but it does not provide explicit convenient methods for conversion. One such method is `getString()`:
+Since ActiveJDBC does not do implicit data conversions, it does provide explicit convenient methods for conversion. One such method is `getString()`:
 
 {{{
 Article a = Article.findById(100);
