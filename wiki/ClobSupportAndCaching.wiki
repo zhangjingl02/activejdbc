@@ -3,7 +3,7 @@
 <wiki:toc max_depth="2" />
 
 = Introduction =
-While ActiveJDBC supports Clobs, developers should be aware that even though the APIs are easy to use, they could stumble upon performance problems due to Clob size. 
+While ActiveJDBC supports Clobs, developers should be aware that even though the APIs are easy to use, they could stumble upon performance problems due to Clob sizes. 
 
 =Writing a Clob=
 
