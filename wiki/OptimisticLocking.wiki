@@ -83,5 +83,9 @@ Here is the output of the StaleModelException:
 {{{
 activejdbc.StaleModelException: Failed to update record for model 'class com.acme.Profile', with id = 1 and record_version = 2. Either this record does not exist anymore, or has been updated to have another record_version.
 }}}
+This message provides enough detail to understand what happened.
+
+=Conclusion=
+Application developers using optimistic locking should be aware of this exception (even though it is a RuntimeException) and build controls into their code to intercept and handle them appropriately.
 
 Back to [Features]
