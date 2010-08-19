@@ -4,6 +4,7 @@
   * [RecordCreation]
   * [BatchOperations]
   * [Validations]
+  * [OptimisticLocking]
   * [Transactions]
   * [OneToManyAssociation]
   * [ManyToManyAssociation]
