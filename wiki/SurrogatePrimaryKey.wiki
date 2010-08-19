@@ -1,6 +1,6 @@
 #summary usage of primary keys in ActiveJDBC
 = Introduction =
-Like ActiveRecord, ActiveJDBC relies on surrogate primary keys in tables. 
+Like !ActiveRecord, ActiveJDBC relies on surrogate primary keys in tables. 
 For more information on surrogate keys, read here: [http://en.wikipedia.org/wiki/Surrogate_key]
 
 = Key name =
