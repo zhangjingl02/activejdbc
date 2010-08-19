@@ -1,0 +1,30 @@
+#summary usage of primary keys in ActiveJDBC
+= Introduction =
+Like ActiveRecord, ActiveJDBC relies on surrogate primary keys in tables. 
+For more information on surrogate keys, read here: [http://en.wikipedia.org/wiki/Surrogate_key]
+
+= Key name =
+By convention, the primary key name is `id`. If your table has a surrogate primary key column with a name `id`, you do not have to do anything.
+
+=Override primary key=
+
+If your table cannot provide a primary key column named `id` (for instance due to corporate naming standards), you can override it with `@IdName` annotation. 
+
+Example: let's say you have a table PEOPLE:
+{{{
+CREATE TABLE people (
+  person_id int(11) NOT NULL AUTO_INCREMENT,
+  first_name              VARCHAR(124),
+  last_name               VARCHAR(124),
+)
+}}}
+
+You will then put annotation on the model:
+{{{
+@IdName("person_id")
+public class Person extends Model{}
+}}}
+
+This way, the model will know to work with column `person_id` and not `id` as a primary key.
+
+back to [Features]
