@@ -5,7 +5,7 @@
 = Introduction =
 The idea of optimistic locking is described here: [http://en.wikipedia.org/wiki/Optimistic_concurrency_control]
 
-ActiveJDBC provides support for optimistic concurrency via a simple convention: A database table needs to provide a column named `record_version` with a type that is capable to sore non-decimal types, such as LONG for MySQL, NUMBER for Oracle, etc. 
+ActiveJDBC provides support for optimistic concurrency via a simple convention: A database table needs to provide a column named `record_version` with a type that is capable to store non-decimal types, such as LONG for MySQL, NUMBER for Oracle, etc. 
 
 
 = Creation of a new record =
