@@ -33,7 +33,7 @@ Let's say we have a model `User`:
 public class User extends Model{}
 }}}
 
-and a user has a password that needs to be stored in a DB in encrypted form. Using callbacks is useful in this case, since all you have to do is to implement a `beforeSave()` method and provide some encryption routine to make the password secure:
+and a user has a password that needs to be stored in a DB in encrypted form. Using callbacks is useful in this case, since all you have to do is to override a `beforeSave()` method and provide some encryption routine to make the password secure:
 
 {{{
 public class User extends Model{
