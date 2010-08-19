@@ -1,5 +1,6 @@
 #summary ActiveJDBC features, TOC
   * [RecordSelection]
+  * [SurrogatePrimaryKey]
   * [LimitAndSort]
   * [RecordCreation]
   * [BatchOperations]
