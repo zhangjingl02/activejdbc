@@ -69,7 +69,7 @@ Sometimes you might have code that reads the same record from a table in order t
 7: p2.set("profile_type", "vacation");
 8: p2.saveIt(); //<<<========= This will throw a StaleModelException
 }}}
-In the code snippet above, at lines 1 and 2, the same record is loaded into models. Then, at line 5, the first one is updated. This will increment the version of the record to 2, and make the model p2 stale. 
+In the code snippet above, at lines 1 and 2, the same record is loaded into models. Then, at line 5, the first one is updated. This will increment the version of the record to 3, and make the model p2 stale. 
 Henceforth, when you try to save the model p2, you will get an exception. The content of a record in the table at this point will be:
 {{{
 +----+--------------+------------------+
