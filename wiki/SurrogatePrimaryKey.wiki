@@ -27,4 +27,12 @@ public class Person extends Model{}
 
 This way, the model will know to work with column `person_id` and not `id` as a primary key.
 
+=Composite Primary Keys=
+Like !ActibveRecord, ActiveJDBC does not support composite primary keys.
+
+
+
+
+
+
 back to [Features]
