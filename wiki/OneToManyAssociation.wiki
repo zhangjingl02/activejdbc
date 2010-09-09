@@ -72,7 +72,12 @@ If you have a referential integrity in your DB and table ADDRESSES has records a
 u.deleteCascade();
 }}}
 
-This method will walk over all parent/child relationships and delete the user and all child records associated with it
+This method will walk over all parent/child relationships and delete the user and all child records associated with it.
+
+There is also a convenience methods that will do the same:
+{{{
+u.delete(true);//true for cascade.
+}}}
 
 =Override Conventions=
 In cases where a surrogate foreign key is already present and has a name that does not follow the ActiveJDBC conventions, you could easily override it like this:
