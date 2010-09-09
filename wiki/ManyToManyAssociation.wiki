@@ -123,10 +123,10 @@ removed from the DB.
 
 Deleting entries is similar to deleting in One to Many associations:
 {{{
-doctor.delete();
+doctor.deleteCascade();
 }}}
 
-However, semantics are different. In many to many relationships, the {{{model.delete()}}} method will do more than just delete this record. It will also discover all associated join tables and will delete records from them that match this models' ID value, effectively dis-associating it from all many to many relationships. This process is efficient because it will issue one DELETE statement per relationship.
+However, semantics are different. In many to many relationships, the {{{model.deleteCascade()}}} method will do more than just delete this record. It will also discover all associated join tables and will delete records from them that match this models' ID value, effectively dis-associating it from all many to many relationships. This process is efficient because it will issue one DELETE statement per relationship.
 
 
 =Overriding associations=
