@@ -119,6 +119,16 @@ Here, only a join table record is being removed, the actual patient record stays
 the same for one to many an many to many relationships, but semantics are different. In one to many association the child record will be 
 removed from the DB.
 
+==Deleting Entries==
+
+Deleting entries is similar to deleting in One to Many associations:
+{{{
+doctor.delete();
+}}}
+
+However, semantics are different. In many to many relationships, the {{{model.delete()}}} method will do more than just delete this record. It will also discover all associated join tables and will delete records from them that match this models' ID value, effectively dis-associating it from all many to many relationships. This process if efficient ans it will issue one DELETE statement per relationship.
+
+
 =Overriding associations=
 In case the naming conventions cannot be used, you can override the convention to let the framework know which models are bound
 in many to many association:
