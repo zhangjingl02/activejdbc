@@ -75,6 +75,21 @@ toyBasket.remove(t);
 }}}
 
 
+=Deleting polymorphic parents=
+
+When deleting a record that is a parent to polymorphic children, you have two options:
+# Only delete the parent itself. This will leave orphan children:
+{{{
+toyBasket.delete();
+}}} 
+
+# Delete parent along with all the children:
+{{{
+toyBasket.deleteCascade(); // or toyBasket.delete(true);
+}}}
+
+The latter will delete the parent along with all associated polymorphic children.
+
 =Finding polymorphic parent=
 ActiveJDBC also provides a way to navigate from children to parents in relationships:
 {{{
