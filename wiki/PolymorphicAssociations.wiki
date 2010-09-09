@@ -78,12 +78,12 @@ toyBasket.remove(t);
 =Deleting polymorphic parents=
 
 When deleting a record that is a parent to polymorphic children, you have two options:
-# Only delete the parent itself. This will leave orphan children:
+  * Only delete the parent itself. This will leave orphan children:
 {{{
 toyBasket.delete();
 }}} 
 
-# Delete parent along with all the children:
+  * Delete parent along with all the children:
 {{{
 toyBasket.deleteCascade(); // or toyBasket.delete(true);
 }}}
