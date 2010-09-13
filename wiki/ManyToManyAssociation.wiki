@@ -60,6 +60,16 @@ Model for table PATIENT:
 public class Patient extends Model {}
 }}}
 
+Model for table PATIENT:
+{{{
+public class Patient extends Model {}
+}}}
+
+Model for table DOCTORS_PATIENTS:
+{{{
+public class DoctorsPatients extends Model {}
+}}}
+
 As usual, ActiveJDBC will use inflections to map these models to the tables. When the framework initializes, it will read metadata for tables
 that back the models, and then it will discover a third table DOCTORS_PATIENTS because the table is named using ActiveJDBC conventions. 
 It also expects the DOCTORS_PATIENTS table to have {{{doctor_id}}} and {{{patient_id}}} columns. If everything is named appropriately
