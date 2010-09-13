@@ -60,11 +60,6 @@ Model for table PATIENT:
 public class Patient extends Model {}
 }}}
 
-Model for table PATIENT:
-{{{
-public class Patient extends Model {}
-}}}
-
 Model for table DOCTORS_PATIENTS:
 {{{
 public class DoctorsPatients extends Model {}
