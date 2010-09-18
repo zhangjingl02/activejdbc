@@ -146,7 +146,7 @@ public class User extends Model {
 }}}
 This validator provides enough freedom to developers who know regular expressions well :)
 
-=Custom validator=
+=Custom validators=
 If all else fails, and ActiveJDBC does not provide a validator you want, you can implement a Validator interface:
 {{{
 public interface Validator {
