@@ -154,12 +154,25 @@ public interface Validator {
     void setMessage(String message);
 }
 }}}
-
-and register it with this call:
+or better yet, !ValidatorAdapter:
 {{{
-List<Validator> validators = ...
-activejdbc.Registry.instance().addValidators(User.class, validators);
+
+public class CustomValidator extends ValidatorAdapter{
+   void validate(Model m){
+      //perform whatever validation logic, then add errors to model if validation did not pass:
+      m.addError("custom_error", "custom message");
+    }
+}
 }}}
+
+Once you have a custom validation, you can register it with a model like this:
+
+{{{
+CustomValidator cv = new CustomValidator();
+Person.addValidator(cv);
+}}}
+
+Validators are executed during validation in the order they were added to the model. The `validate()` method is called from `save()` and `saveIt()`
 
 =Conclusion=
 ActiveJDBC provides a number of built in validators and also allows to register custom validators.
