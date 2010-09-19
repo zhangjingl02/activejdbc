@@ -39,17 +39,6 @@ String firstNameError = errors.get("first_name");
 
 As you can imagine, it is very easy to write web applications with form validation using this ActiveJDBC validations.
 
-
-=Override default message=
-Message overriding is easy with the help of a method `message()`:
-{{{
-public class Person extends Model {
-    static{
-        validatePresenceOf("first_name", "last_name").message("this value is missing");
-    }    
-}
-}}}
-
 =Usage in a web application=
 This is a pseudo-code of a web application controller where a form was submitted:
 
@@ -181,8 +170,86 @@ String errorMessage = p.errors().get("custom_error");
 
 Validators are executed during validation in the order they were added to the model. The `validate()` method is called from `save()` and `saveIt()`
 
+
+=Customization of messages=
+ActiveJDBC provides stock messages (one for each validator), which may not be appropriate for all projects. For instance, `validatePresenseOf()` provides a simple message "value is missing". In order to customize these messages, ActiveJDBC provides a DSL-ish like facility:
+
+{{{
+public class Person extends Model {
+    static{
+        validatePresenceOf("first_name", "last_name").message("name.missing");
+    }    
+}
+}}}
+where `name.missing` is a key from a resource bundle `activejdbc_messages`.
+
+After a validation process, if there are errors, they are accessible via the `p.errors()` method, and a specific validation error message is accessed using an attribute name as a message key:
+
+{{{
+String nameMissing = p.errors().get("name.missing");
+}}}
+
+..or you can use the `Errors` object returned from `errors()` method as a `Map` and process it generically (as is usually the case for web applications).
+
+
+=Parametric validation messages=
+In some cases, you will need to parametrize messages coming from a resource bundle. For instance, in a file `activejdbc_messages.properties` you would have an entry:
+
+{{{
+#activejdbc_messages.properties:
+temperature.outside.limits = Temperature is outside acceptable limits, while it needs to be between {0} and {1}
+}}}
+
+You might have a model defined like this:
+{{{
+public class Temperature{
+   static{
+      validateRange("temp", 10, 2000);
+   }
+}
+}}}
+You will then create an instance of Temperature, set the values and validate in a code pattern similar to this;
+{{{
+Temperature temp = new Temperature();
+temp.set("temp", 5000);
+
+if(!temp.save()){
+   String message = temp.errors().get(temp, 10, 2000);
+   System.out.println(message);// prints: Temperature is outside acceptable limits, while it needs to be between 10 and 2000
+}
+}}}
+
+=Internationalization of validation messages (I18N)=
+In cases where there is a need for internationalization of messages, this is easy to accomplish by providing a locale instance to the `errors()` method.
+But first, you will need to create these messages. ActiveJDBC uses a resource bundle `activejdbc_messages`. This means:
+  * `activejdbc_messages.properties` - default locale bundle
+  * `activejdbc_messages_de_DE.properties` - German/Germany bundle
+  * etc.
+As usual in Java you will need to create a bundle for each locale. 
+If you need a localized message during runtime, all you need it to provide a locale to the `errors()` method of a model. Building on the example above with temperature:
+
+
+{{{
+#activejdbc_messages_de_DE.properties:
+temperature.outside.limits = Die Temperatur liegt außerhalb akzeptabler Grenzen, während es sein muss zwischen {0} und {1}
+}}}
+
+At run time, the message will be printed in German if a locale provided is German:
+
+
+{{{
+Temperature temp = new Temperature();
+temp.set("temp", 5000);
+
+if(!temp.save()){
+   String message = temp.errors(new Locale("de", "DE")).get(temp, 10, 2000); //<<<=== provide locale
+   System.out.println(message);// prints: Die Temperatur liegt außerhalb akzeptabler Grenzen, während es sein muss zwischen 10 und 2000
+}
+}}}
+
+
 =Conclusion=
-ActiveJDBC provides a number of built in validators and also allows to register custom validators.
+ActiveJDBC provides a number of built in validators, allows to register custom validators, allows for parametrization and internationalization of validation messages.
 
 
 back to [Features]
