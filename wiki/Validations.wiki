@@ -155,11 +155,23 @@ public class CustomValidator extends ValidatorAdapter{
 }}}
 
 Once you have a custom validation, you can register it with a model like this:
+{{{
+public class Person extends Model{
+   static{
+      validateWith(new CustomValidator());
+   }
+}
+
+}}}
+
+
+Another way to register is outside your model class:
 
 {{{
 CustomValidator cv = new CustomValidator();
 Person.addValidator(cv);
 }}}
+
 
 after a validation, you can retrieve an error like this:
 {{{
