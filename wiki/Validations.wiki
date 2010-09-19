@@ -186,7 +186,7 @@ where `name.missing` is a key from a resource bundle `activejdbc_messages`.
 After a validation process, if there are errors, they are accessible via the `p.errors()` method, and a specific validation error message is accessed using an attribute name as a message key:
 
 {{{
-String nameMissing = p.errors().get("name.missing");
+String nameMissing = p.errors().get("first_name");
 }}}
 
 ..or you can use the `Errors` object returned from `errors()` method as a `Map` and process it generically (as is usually the case for web applications).
