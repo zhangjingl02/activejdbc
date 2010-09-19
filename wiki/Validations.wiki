@@ -160,7 +160,7 @@ or better yet, !ValidatorAdapter:
 public class CustomValidator extends ValidatorAdapter{
    void validate(Model m){
       //perform whatever validation logic, then add errors to model if validation did not pass:
-      m.addError("custom_error", "custom message");
+      m.addError("custom_error", "message.key.from.resource.bundle");
     }
 }
 }}}
