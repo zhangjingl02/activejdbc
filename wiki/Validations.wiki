@@ -172,6 +172,13 @@ CustomValidator cv = new CustomValidator();
 Person.addValidator(cv);
 }}}
 
+after a validation, you can retrieve an error like this:
+{{{
+Person p = ...
+p.save();
+String errorMessage = p.errors().get("custom_error");
+}}}
+
 Validators are executed during validation in the order they were added to the model. The `validate()` method is called from `save()` and `saveIt()`
 
 =Conclusion=
