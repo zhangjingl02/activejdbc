@@ -173,7 +173,7 @@ Another way to register is outside your model class:
 
 {{{
 CustomValidator cv = new CustomValidator();
-Person.addValidator(cv);
+Person.addValidator(cv).message("blah.blah");
 }}}
 
 
