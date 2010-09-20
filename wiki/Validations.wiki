@@ -136,11 +136,12 @@ public class User extends Model {
 This validator provides enough freedom to developers who know regular expressions well :)
 
 =Custom validators=
-If all else fails, and ActiveJDBC does not provide a validator you want, you can implement a Validator interface:
+If all else fails, and ActiveJDBC does not provide a validator you want, you can extend a ValidatorAdapter class:
 {{{
 public interface Validator {
     void validate(Model m);
     void setMessage(String message);
+    String formatMessage(Locale locale, Object ... params);
 }
 }}}
 or better yet, !ValidatorAdapter:
@@ -148,8 +149,11 @@ or better yet, !ValidatorAdapter:
 
 public class CustomValidator extends ValidatorAdapter{
    void validate(Model m){
+       boolean valid = true;
       //perform whatever validation logic, then add errors to model if validation did not pass:
-      m.addError("custom_error", "message.key.from.resource.bundle");
+
+      if(!valid)
+         m.addValidator("custom_error", this);
     }
 }
 }}}
@@ -158,7 +162,7 @@ Once you have a custom validation, you can register it with a model like this:
 {{{
 public class Person extends Model{
    static{
-      validateWith(new CustomValidator());
+      validateWith(new CustomValidator()).message("custom.message");
    }
 }
 
@@ -231,6 +235,42 @@ if(!temp.save()){
 }
 }}}
 
+=Split parameters for validation messages=
+In some cases you know parameter values when declaring a model, but some other parameters are only known in the context where validation is actually used. In this case, you can split parameters between the declaration (static context) and calling for messages (dynamic context);
+
+
+Resource bundle:
+
+{{{
+#activejdbc_messages.properties:
+temperature.outside.limits = Temperature is outside acceptable limits, while it needs to be between {0} and {1} for user: {2}
+}}}
+
+Model definition:
+{{{
+public class Temperature{
+   static{
+      validateRange("temp", 10, 2000).message("temperature.outside.limits");
+   }
+}
+}}}
+As you can see, the message calls for three parameters, but the validator can only set two. At the time of Model definition, the user is not known. However, the user can be provided when the validation fails, and an application calls for an error message:
+
+{{{
+Temperature temp = new Temperature();
+temp.set("temp", 5000);
+
+if(!temp.save()){
+   String message = temp.errors().get("temp", user.getName());
+   System.out.println(message);// prints: Temperature is outside acceptable limits, while it needs to be between 10 and 2000
+}
+}}}
+
+The getter method for Errors class has this signature: `get(String attributeName, Object ... params)`, which allows to supply more than one parameter. 
+
+The one rule you have to keep in mind, is that static parameters will be indexed from zero, and dynamic parameters will be appended to static. As in this case, the user name is placed in the message at index {2}.
+
+
 =Internationalization of validation messages (I18N)=
 In cases where there is a need for internationalization of messages, this is easy to accomplish by providing a locale instance to the `errors()` method.
 But first, you will need to create these messages. ActiveJDBC uses a resource bundle `activejdbc_messages`. This means:
@@ -238,7 +278,8 @@ But first, you will need to create these messages. ActiveJDBC uses a resource bu
   * `activejdbc_messages_de_DE.properties` - German/Germany bundle
   * etc.
 As usual in Java you will need to create a bundle for each locale. 
-If you need a localized message during runtime, all you need it to provide a locale to the `errors()` method of a model. Building on the example above with temperature:
+If you need a localized message during runtime, all you need it to provide a locale to the `errors()` method of a model. 
+Building on the example above with temperature:
 
 
 {{{
@@ -254,7 +295,7 @@ Temperature temp = new Temperature();
 temp.set("temp", 5000);
 
 if(!temp.save()){
-   String message = temp.errors(new Locale("de", "DE")).get(temp, 10, 2000); //<<<=== provide locale
+   String message = temp.errors(new Locale("de", "DE")).get(temp); //<<<=== provide locale
    System.out.println(message);// prints: Die Temperatur liegt außerhalb akzeptabler Grenzen, während es sein muss zwischen 10 und 2000
 }
 }}}
