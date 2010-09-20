@@ -226,7 +226,7 @@ Temperature temp = new Temperature();
 temp.set("temp", 5000);
 
 if(!temp.save()){
-   String message = temp.errors().get(temp, 10, 2000);
+   String message = temp.errors().get("temp", 10, 2000);
    System.out.println(message);// prints: Temperature is outside acceptable limits, while it needs to be between 10 and 2000
 }
 }}}
