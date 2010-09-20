@@ -44,7 +44,7 @@ This is a pseudo-code of a web application controller where a form was submitted
 
 {{{
 
-public void savePerson(){
+public void doPost(...){
    Map params = ... // this is a map of HTML form submitted from a web page
    Person p = Person();
    p.fromMap(params); //The model will only pluck values that correspond to it's attribute names
@@ -52,9 +52,20 @@ public void savePerson(){
    if(p.save()){
       //render success page
    }else{
-      renderSamePageWithErrors(params, p.errors());// this is web framework specific, only pseudo-code
+      request.setAttribute("errors", p.errors());
+      getServletContext().getRequestDispatcher("/results.jsp").forward(request,response);
    }
 }
+}}}
+
+In a JSP:
+
+{{{
+
+<span style="error">${errors.first_name}</span>
+...
+<span style="error">${errors.last_name}</span>
+...
 }}}
 As you can see, it is trivial to integrate ActiveJDBC into a web application.
 
