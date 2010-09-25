@@ -32,6 +32,7 @@ As in other cases, this is a declaration that marks a model as "cachable". If yo
 
 In order to enable caching (even if you have @Cache annotations!) you have to have a property file on the classpath called `activejdbc.properties`. This file needs to have one line of code:
 {{{
+#inside file: activejdbc.properties
 cache.enabled=true
 }}}
 
