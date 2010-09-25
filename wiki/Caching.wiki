@@ -28,7 +28,14 @@ As in other cases, this is a declaration that marks a model as "cachable". If yo
 3078 [main] INFO activejdbc.DB - Query: "SELECT * FROM libraries WHERE id = ?", with parameters: [1], took: 0 milliseconds
 }}}
 
+=Global Cache Switch=
 
+In order to enable caching (even if you have @Cache annotations!) you have to have a property file on the classpath called `activejdbc.properties`. This file needs to have one line of code:
+{{{
+cache.enabled=true
+}}}
+
+Without this file with one property no caching will be turned on.
 =Cache purging=
 
 If you examine the log from above, you will see that after an insert statement into the "LIBRARIES" table, the system is purging cache related to this table, as well as "BOOKS" table. ActiveJDBC does this since the cache in memory might be potentially of out sync with the data in the DB, and hence will be purged. Related tables' caches are also purged. Since there exists relationship: library has many books,  the books cache could also be stale, and this is a reason why a table "BOOKS" purged as well. 
