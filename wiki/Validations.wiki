@@ -229,7 +229,7 @@ temperature.outside.limits = Temperature is outside acceptable limits, while it 
 
 You might have a model defined like this:
 {{{
-public class Temperature{
+public class Temperature extends Model{
    static{
       validateRange("temp", 10, 2000).message("temperature.outside.limits");
    }
@@ -259,7 +259,7 @@ temperature.outside.limits = Temperature is outside acceptable limits, while it 
 
 Model definition:
 {{{
-public class Temperature{
+public class Temperature extends Model{
    static{
       validateRange("temp", 10, 2000).message("temperature.outside.limits");
    }
