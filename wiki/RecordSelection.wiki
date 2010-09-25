@@ -18,7 +18,7 @@ CREATE TABLE people (
    );
 }}}
 
-=Write Model=
+=Writing a Model=
 Simple models are written in one line of code. No need for setters or getters. 
 {{{
 public class Person extends Model {}
