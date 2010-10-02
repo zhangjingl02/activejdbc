@@ -31,7 +31,7 @@ You can implement the `CallbackListener` interface external to any model and reg
 
 Registry.instance().addListener(Roles.class, myListener);
 }}}
-this assuming that Roles is a model. You can implement either `CallbackListener` or extend `CallbackSupport`
+this assuming that Roles is a model. You can implement either  the `CallbackListener`  interface or extend `CallbackSupport` where all methods are implemented with blank bodies and only override the ones you need.
 
 =Override Model callback methods=
 
