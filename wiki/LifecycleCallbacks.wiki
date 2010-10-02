@@ -29,7 +29,7 @@ As you can see, there are total of eight calls that a subclass can override to g
 You can implement the `CallbackListener` interface external to any model and register it like this:
 {{{
 
-Registry.instance.addLiatener(Roles.class, myListener);
+Registry.instance().addListener(Roles.class, myListener);
 }}}
 this assuming that Roles is a model. You can implement either `CallbackListener` or extend `CallbackSupport`
 
