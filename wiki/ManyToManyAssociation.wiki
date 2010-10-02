@@ -150,10 +150,9 @@ The annotation @Many2Many is one-sided. This means that it provides enough infor
 to add another one to the model Course (it will not break if you do though). ActiveJDBC follows DRY principle as much as possible.
 
 =Real models for join tables=
-In some cases the join tables might contain more data than just foreign keys to the related tables. In this case, you can create another 
-model that represents these tables. ActiveJDBC handles it transparently.
+Join tables are represented by real models, ActiveJDBC handles it transparently.
 To illustrate the above examples, for doctor - patient example, you might want to indicate where a specific patient is treated and you would then add 
-a new column to the DOCTORS_PATIENTS table called LOCATION. Then you would define a new model:
+a new column to the DOCTORS_PATIENTS table called LOCATION. Then you would define a model like so:
 {{{
 @Table("DOCTORS_PATIENTS")
 class DocPat extends Model{}
