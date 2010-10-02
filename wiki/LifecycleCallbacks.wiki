@@ -23,6 +23,18 @@ public interface  CallbackListener {
 }}}
 
 As you can see, there are total of eight calls that a subclass can override to get notified of a specific event.
+
+=Registration of external listeners=
+
+You can implement the `CallbackListener` interface external to any model and register it like this:
+{{{
+
+Registry.instance.addLiatener(Roles.class, myListener);
+}}}
+this assuming that Roles is a model. You can implement either `CallbackListener` or extend `CallbackSupport`
+
+=Override Model callback methods=
+
 The Model class already extends a class `CallbackSupport`, which provides empty implementations of these eight methods. All a developer needs to do is to override one or more methods to perform a task at a certain time. 
 
 
