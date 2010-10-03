@@ -65,6 +65,11 @@ Model for table DOCTORS_PATIENTS:
 public class DoctorsPatients extends Model {}
 }}}
 
+
+<font color=red>
+In cases when you override conventions, creation of a model that represents a join table is unnecessary
+</font>
+
 As usual, ActiveJDBC will use inflections to map these models to the tables.
 It also expects the DOCTORS_PATIENTS table to have {{{doctor_id}}} and {{{patient_id}}} columns. If everything is named appropriately
 (there are ways to override these conventions, see below), then the many to many relationships are configured across Doctor and Patient models. 
@@ -149,7 +154,9 @@ records in the "courses" table.
 The annotation @!Many2Many is one-sided. This means that it provides enough information to the framework, and there is no need 
 to add another one to the model Course (it will not break if you do though). ActiveJDBC follows DRY principle as much as possible.
 
+<font color=red>
 NOTE: in case of using @!Many2Many annotation, creation of a model that represent a join table is not necessary.
+</font>
 
 =Real models for join tables=
 Join tables are represented by real models, ActiveJDBC handles it transparently.
