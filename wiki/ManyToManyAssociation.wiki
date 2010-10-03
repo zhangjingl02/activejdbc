@@ -146,10 +146,10 @@ expect to find a column "astudent_id" in the table "registrations" and will assu
 targetFKName is similar to the sourceFKName, but stands for a column "acourse_id" in the table "registrations" that contains keys to the 
 records in the "courses" table. 
 
-The annotation @Many2Many is one-sided. This means that it provides enough information to the framework, and there is no need 
+The annotation @!Many2Many is one-sided. This means that it provides enough information to the framework, and there is no need 
 to add another one to the model Course (it will not break if you do though). ActiveJDBC follows DRY principle as much as possible.
 
-NOTE: in case of using !@Many2Many annotation, creation of a model that represent a join table is not necessary.
+NOTE: in case of using @!Many2Many annotation, creation of a model that represent a join table is not necessary.
 
 =Real models for join tables=
 Join tables are represented by real models, ActiveJDBC handles it transparently.
