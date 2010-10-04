@@ -210,7 +210,7 @@ The annotation @!Many2Many is one-sided. This means that it provides enough info
 to add another one to the model Course (it will not break if you do though). ActiveJDBC follows DRY principle as much as possible.
 
 <font color=red>
-NOTE: in case of using @!Many2Many annotation, creation of a model that represent a join table is not necessary.
+NOTE: in case of using @!Many2Many annotation, creation of a model that represent a join table is not optional.
 </font>
 
 =Real models for join tables=
