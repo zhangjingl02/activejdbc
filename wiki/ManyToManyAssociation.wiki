@@ -67,7 +67,7 @@ public class DoctorsPatients extends Model {}
 
 
 <font color=red>
-In cases when you override conventions, creation of a model that represents a join table is unnecessary
+In cases when you override conventions, creation of a model that represents a join table is optional
 </font>
 
 As usual, ActiveJDBC will use inflections to map these models to the tables.
