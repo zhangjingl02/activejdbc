@@ -66,7 +66,9 @@ The table TAG content might look like this after operations above:
 ==Conditional search for polymorphic children==
 
 While the `getAll(type)` method returns all relations, the `get(type)` method allows for a selection criteria on the child table:
+{{{
 List<Tag> tags = product.get(Tag.class, "tag = ?", "toy");
+}}}
 
 
 ==Removing polymorphic children==
