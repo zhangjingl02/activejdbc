@@ -51,6 +51,14 @@ List<Address> addresses = user.getAll(Address.class);
 
 Here the Address.class needs to be passed in because a model User might have many other relationships with models other than Address.class. 
 
+=Conditional selection of related objects=
+Sometimes you need to collect children of a model based on a selection criteria:
+In such cases, use the `get(type)` method:
+{{{
+List<Address> shippingAddresses = customer.get(Address.class, "address_type = ?", "shipping");
+}}}
+Of course it is expected that the table ADDRESSES will have a column "address_type".
+
 
 =How to get Parent=
 
