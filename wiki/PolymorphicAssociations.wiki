@@ -36,7 +36,7 @@ Once the setup is done, you can proceed to use the models as normal one to many 
 
 Operations themselves are no different from regular ActiveJDBC on to many operations:
 
-=Adding polymorphic children=
+=Adding and searching for polymorphic children=
 {{{
 Product toyBasket =  Product.findById(100);
 p.add(Tag.create("tag", "basket"));
