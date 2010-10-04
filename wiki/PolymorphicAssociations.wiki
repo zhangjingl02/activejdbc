@@ -36,7 +36,7 @@ Once the setup is done, you can proceed to use the models as normal one to many 
 
 Operations themselves are no different from regular ActiveJDBC on to many operations:
 
-=Adding and searching for polymorphic children=
+==Adding and searching for polymorphic children==
 {{{
 Product toyBasket =  Product.findById(100);
 p.add(Tag.create("tag", "basket"));
@@ -63,8 +63,13 @@ The table TAG content might look like this after operations above:
 +----+---------+--------------------------------+
 }}}
 
+==Conditional search for polymorphic children==
 
-=Removing polymorphic children=
+While the `getAll(type)` method returns all relations, the `get(type)` method allows for a selection criteria on the child table:
+List<Tag> tags = product.get(Tag.class, "tag = ?", "toy");
+
+
+==Removing polymorphic children==
 
 Removing children is as easy as expected;
 
@@ -75,7 +80,7 @@ toyBasket.remove(t);
 }}}
 
 
-=Deleting polymorphic parents=
+==Deleting polymorphic parents==
 
 When deleting a record that is a parent to polymorphic children, you have two options:
   * Only delete the parent itself. This will leave orphan children:
@@ -90,7 +95,7 @@ toyBasket.deleteCascade(); // or toyBasket.delete(true);
 
 The latter will delete the parent along with all associated polymorphic children.
 
-=Finding polymorphic parent=
+==Finding polymorphic parent==
 ActiveJDBC also provides a way to navigate from children to parents in relationships:
 {{{
 Tag t = Tag.findById(1);
