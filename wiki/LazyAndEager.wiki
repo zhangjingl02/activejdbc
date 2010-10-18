@@ -60,7 +60,7 @@ List<Post> todayPosts = Post.where("post_date = ?", today).include(Author.class,
 The above code will generate only three queries to DB, one per each table. This of course will create an object graph on memory with certain implications. While it is going to be a more efficient approach from the point of DB IO view, it certainly will consume more RAM. Developers will need to understand the implications and perform test cases to see if eager loading is improving performance. 
 
 =Conversion to Maps=
-Conversion to Maps.
+
 When a model that was hydrated with included children is converted to a map, all the dependencies are converted to maps and inserted into a parent model map too.
 Here is an example:
 {{{
