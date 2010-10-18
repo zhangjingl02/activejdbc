@@ -36,7 +36,7 @@ In the above example, the number of queries generated and executed is going to b
 This approach is going to kill performance in some applications. A better approach is to load all parents at once by a single query:
 
 {{{
-1. List<Address> addresses.findAll().include(User.class);
+1. List<Address> addresses = Address.findAll().include(User.class);
 2. 
 3. for(Address address: addresses){
 4.    User user = address.parent(User.class);
