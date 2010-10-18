@@ -24,7 +24,7 @@ In the example above, the collection of addresses is not cached in the User mode
 Let's consider an example where an ORM could unexpectedly generate a huge number of inefficient queries:
 
 {{{
-1. List<Address> Address.findAll();
+1. List<Address> addresses = Address.findAll();
 2. 
 3. for(Address address: addresses){
 4.    User user = address.parent(User.class);
