@@ -2,7 +2,7 @@
 <wiki:toc max_depth="2" />
 
 = Lazy by default =
-ActiveJDBC is lazy by default. In this sense. it has semantics closer to !ActiveRecord than Hibernate. 
+ActiveJDBC is lazy by default. In this sense, it has semantics closer to !ActiveRecord than Hibernate. 
 
 This means that if you have a model User and a model Address, and they have a one to many relationship, when a user has many addresses, the code:
 
@@ -49,22 +49,23 @@ The ActiveJDBC will then issue two queries: one to get all Address(es) and the o
 The same logic can be applied to all relationships going up and down: one to many, many to one and many to many. 
 
 <font color=red>
-NOTE: the relationships that were loaded by "include" are cached and will be returned each time (without further access to DB) when a getter is used!
+NOTE: the relationships that were loaded by "include" are cached and will be returned each time (without further access to DB) when the same getter is used!
 </font>
 
 =Eager simultaneous loading of parents and children =
+
 Suppose we have two one to many relationships: Author has many Posts and a Post has many Comments. In cases like these, we can load a post and all corresponding Authors and Comments very efficiently:
 {{{
 List<Post> todayPosts = Post.where("post_date = ?", today).include(Author.class, Comment.class);
 }}}
-The above code will generate only three queries to DB, one per each table. This of course will create an object graph on memory with certain implications. While it is going to be a more efficient approach from the point of DB IO view, it certainly will consume more RAM. Developers will need to understand the implications and perform test cases to see if eager loading is improving performance. 
+The above code will generate only three queries to DB, one per each table. This of course will create an object graph on memory with certain implications. While it is going to be a more efficient approach from the point of DB IO view, it certainly will consume more RAM. Developers will need to understand the implications and perform test cases to see if eager loading is improving or degrading performance. 
 
 =Conversion to Maps=
 
-When a model that was hydrated with included children is converted to a map, all the dependencies are converted to maps and inserted into a parent model map too.
+When a model with included children is converted to a map, all the dependencies are converted to maps and inserted into a parent model map too.
 Here is an example:
 {{{
-1.        LazyList<User> users = User.findAll().orderBy("id").include(Address.class);
+1.        LazyList<User> users = User.findAll().include(Address.class);
 2.        List<Map> maps = users.toMaps();
 3. 
 4.        Map user = maps.get(0);
