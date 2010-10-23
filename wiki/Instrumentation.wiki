@@ -6,6 +6,7 @@ ActiveJDBC requires instrumentation of class files after they are compiled. This
 
 =Maven Plugin=
 The simple usage of a Maven plugin is provided by a Maven ActiveJDBC Simple Example project: 
+
 https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
 Specifically, the plugin is added to a pom like this:
 
