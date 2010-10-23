@@ -2,7 +2,7 @@
 
 = Introduction =
 
-ActiveJDBC requires instrumentation of class files after they are compiled. This is accomplished with an Instrumentation package provided by the project. There are two ways to use it: with a Maven plugin, and as a standalone Java class (in case you have a non-Maven project)
+ActiveJDBC requires instrumentation of class files after they are compiled. This is accomplished with an Instrumentation package provided by the project. There are three ways to use it: with a Maven plugin, Ant, and as a standalone Java class (in case you have a non-Maven project)
 
 =Maven Plugin=
 The simple usage of a Maven plugin is provided by a Maven ActiveJDBC Simple Example project: 
