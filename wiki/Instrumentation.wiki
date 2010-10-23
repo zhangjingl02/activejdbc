@@ -4,7 +4,7 @@
 
 ActiveJDBC requires instrumentation of class files after they are compiled. This is accomplished with an Instrumentation package provided by the project. There are three ways to use it: with a Maven plugin, Ant, and as a standalone Java class (in case you have a non-Maven project)
 
-=Maven Plugin=
+=Maven plugin instrumentation=
 The simple usage of a Maven plugin is provided by a Maven ActiveJDBC Simple Example project: 
 
 https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
@@ -28,7 +28,7 @@ Specifically, the plugin is added to a pom like this:
 and as you can see, binds to a "process-classes" phase. It will automatically instrument your classes during the build.
 
 
-=Usage with Ant=
+=Ant instrumentation=
 Instrumenting models with Ant projects is easy too: https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/
 
 The class responsible for instrumentation is called `activejdbc.instrumentation.Main`, and here is an example of using it:
