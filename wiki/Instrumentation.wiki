@@ -1,0 +1,63 @@
+#summary ActiveJDBC instrumentation explained
+
+= Introduction =
+
+ActiveJDBC requires instrumentation of class files after they are compiled. This is accomplished with an Instrumentation package provided by the project. There are two ways to use it: with a Maven plugin, and as a standalone Java class (in case you have a non-Maven project)
+
+=Maven Plugin=
+The simple usage of a Maven plugin is provided by a Maven ActiveJDBC Simple Example project: 
+https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
+Specifically, the plugin is added to a pom like this:
+
+{{{
+           <plugin>
+                <groupId>activejdbc</groupId>
+                <artifactId>activejdbc-instrumentation</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+}}}
+and as you can see, binds to a "process-classes" phase. It will automatically instrument your classes during the build.
+
+
+=Usage with Ant=
+Instrumenting models with Ant projects is easy too: https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/
+
+The class responsible for instrumentation is called `activejdbc.instrumentation.Main`, and here is an example of using it:
+{{{
+    <target name="instrument" depends="compile">
+        <java classname="activejdbc.instrumentation.Main">
+            <sysproperty key="outputDirectory" value="${classes}"/>
+            <classpath refid="build_classpath"/>
+        </java>
+    </target>
+}}}
+
+where ${classes} represents a directory where class files were compiled. 
+
+
+=Standalone instrumentation =
+
+If you are not using Maven or Ant, you can run instrumentation with a command similar to this:
+
+{{{
+java  -cp=$CLASSPATH  -DoutputDirectory=build activejdbc.instrumentation.Main
+}}}
+
+where:
+  * $CLASSPATH is your classpath (see the build.xml) in the Ant example above for things you will need to have on the classspath.
+  * build - is a directory where you compiled all classes in a "compile" step before instrumentation
+
+
+=Speed of instrumentation=
+... is very fast - for large projects (50 - 60 models) it takes about 5 - 7 seconds, and for small projects (under 10 models) usually within a second or two.
+
+
+back to [Features]
