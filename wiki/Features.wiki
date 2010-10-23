@@ -18,3 +18,4 @@
   * [StatisticsReporting] - to be added
   * [LazyAndEager] - to be added
   * [Logging]
+  * [Instrumentation]
