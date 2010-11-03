@@ -33,7 +33,7 @@ public static void main(String[] args) {
 The call {{{Base.open()}}} opens a connection and attaches it to the current thread. All subsequent methods of all models reuse this connection. The call {{{Base.close()}}} closes connection and removes it from the current thread. 
 
 = Transaction related APIs =
-...so far so good, not to transactions. ActiveJDBC does provide a couple of transaction related convenience calls:
+...so far so good, but to transactions. ActiveJDBC does provide a couple of transaction related convenience calls:
 {{{
 Base.commitTransaction();
 }}}
