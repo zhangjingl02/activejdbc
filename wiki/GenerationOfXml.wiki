@@ -1,0 +1,82 @@
+#summary how to generate XML from models
+
+<wiki:toc max_depth="2" />
+
+=Introduction=
+Often developers need to generate XML from models. In more complicated situation, they probably would write some XML generation code. However under simple condition, classes Model and LazyList already provide the basics. 
+
+=Generate simple XML from a model=
+
+Here is code that will provide stock XML from a model:
+{{{
+Person p  = (Person)Person.findById(1);
+String xml = p.toXml(2, true);
+}}}
+
+The XML produced will look something like this:
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+  <person>
+    <updated_at>2010-11-09 19:02:11.0</updated_at>
+    <created_at>2010-11-09 19:02:11.0</created_at>
+    <dob>1934-12-01</dob>
+    <last_name>Smith</last_name>
+    <graduation_date>1954-12-01</graduation_date>
+    <name>John</name>
+    <id>1</id>
+  </person>
+}}}
+
+this of course depends on the table structure. The first parameter (2) is a number of spaces for indent, and second whether to add an XML declaration or not. 
+
+=Include attributes into generated XML =
+
+A variation on the example above is to provide a list of attributes that you are interested in, so that only these attributes are included:
+
+{{{
+Person p  = (Person)Person.findById(1);
+String xml = p.toXml(2, true, "last_name", "dob");
+}}}
+The resulting XML will have nothing but the attributes specified:
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+  <person>
+    <dob>1934-12-01</dob>
+    <last_name>Smith</last_name>
+  </person>
+}}}
+
+=Inclusion of dependencies=
+When a model is has relationships, the generated XML will loop through them to include their XML into the parent XML as well:
+{{{
+List<User> personList = User.findAll().orderBy("id").include(Address.class);
+User u = personList.get(0);
+String xml = u.toXml(2, true);
+}}}
+
+result:
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+  <user>
+    <addresses>
+      <address>
+        <user_id>1</user_id>
+        <address2>apt 31</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>123 Pine St.</address1>
+        <id>1</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>1</user_id>
+   ...
+    truncated for brevity
+   ...
+    </addresses>
+    <email>mmonroe@yahoo.com</email>
+    <last_name>Monroe</last_name>
+    <id>1</id>
+    <first_name>Marilyn</first_name>
+  </user>
+}}}
