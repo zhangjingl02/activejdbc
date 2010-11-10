@@ -80,3 +80,102 @@ result:
     <first_name>Marilyn</first_name>
   </user>
 }}}
+
+=Generate XML from a resultset=
+Generating XML from a LazyList is equally easy:
+{{{
+LazyList<User> personList = User.findAll().orderBy("id").include(Address.class);
+String xml = personList.toXml(2, true);
+}}}
+
+An example of generated XML:
+{{{
+<?xml version="1.0" encoding="UTF-8" ?>
+<users>
+  <user>
+    <addresses>
+      <address>
+        <user_id>1</user_id>
+        <address2>apt 31</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>123 Pine St.</address1>
+        <id>1</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>1</user_id>
+        <address2>apt 21</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>456 Brook St.</address1>
+        <id>2</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>1</user_id>
+        <address2>apt 32</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>23 Grove St.</address1>
+        <id>3</id>
+        <city>Springfield</city>
+      </address>
+    </addresses>
+    <email>mmonroe@yahoo.com</email>
+    <last_name>Monroe</last_name>
+    <id>1</id>
+    <first_name>Marilyn</first_name>
+  </user>
+  <user>
+    <addresses>
+      <address>
+        <user_id>2</user_id>
+        <address2>apt 34</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>143 Madison St.</address1>
+        <id>4</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>2</user_id>
+        <address2>apt 35</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>153 Creek St.</address1>
+        <id>5</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>2</user_id>
+        <address2>apt 36</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>163 Gorge St.</address1>
+        <id>6</id>
+        <city>Springfield</city>
+      </address>
+      <address>
+        <user_id>2</user_id>
+        <address2>apt 37</address2>
+        <state>IL</state>
+        <zip>60606</zip>
+        <address1>173 Far Side.</address1>
+        <id>7</id>
+        <city>Springfield</city>
+      </address>
+    </addresses>
+    <email>jdoe@gmail.com</email>
+    <last_name>Doe</last_name>
+    <id>2</id>
+    <first_name>John</first_name>
+  </user>
+</users>
+
+}}}
+
+as you can see, the two users were generated. Since the include was used, the corresponding children from the ADDRESSES table were queried too for their XML. 
+
+
+Back to [Features]
