@@ -28,13 +28,33 @@ As in other cases, this is a declaration that marks a model as "cachable". If yo
 3078 [main] INFO activejdbc.DB - Query: "SELECT * FROM libraries WHERE id = ?", with parameters: [1], took: 0 milliseconds
 }}}
 
-=Global Cache Switch=
+
+
+=Cache Configuration (AJ Version 1.1 and above)=
+
+The new cache configuration includes providing a cache manager class name in the  file `activejdbc.properties`. This file will have to be on the root of classpath.
+Here is one example:
+
+{{{
+#inside file: activejdbc.properties
+
+cache.manager=activejdbc.cache.OSCacheManager
+}}}
+
+Here two things happen: 1. Cache in general is enabled (it is not enabled even if you have @Cached annotations on classes), and 2. AJ will be using OSCacheManager as implementation of cache. 
+
+
+=Cache Configuration (AJ Version 1.0 and below)=
 
 In order to enable caching (even if you have @Cache annotations!) you have to have a property file on the classpath called `activejdbc.properties`. This file needs to have one line of code:
 {{{
 #inside file: activejdbc.properties
 cache.enabled=true
 }}}
+
+
+
+
 
 Without this file with one property no caching will be turned on.
 =Cache purging=
@@ -55,5 +75,26 @@ While caching is a complex issue, I can suggest caching predominantly lookup dat
 =OSCache configuration for cluster=
 In case your application is deployed in a cluster, and you use caching in ActiveJDBC, you will need to configure clustering. This is necessary so that when your application invokes a destructive action, a proper purge events are distributed in a cluster. OSCache is very efficient, as it does not share the actual data across cluster. Each cluster will have its own caches based on a usage on that cluster. Whenever a purge event is generated on one node in the cluster, this event will be broadcast by OSCache to other nodes, effectively blowing the same caches across entire cluster. These events are lightweight and very fast (UDP, using JGroups).
 For more information on configuration of OSCache clustering, look here:[http://www.opensymphony.com/oscache/wiki/Clustering.html]
+
+==Example of clustering configuration for OSCache==
+Contents of file: *oscache.properties* (also found in root of classpath)
+{{{
+cache.cluster.properties =
+TCP(start_port=7800;loopback=true):
+TCPPING(initial_hosts=localhost[7800];port_range=5;timeout=3000;num_initial_members=3;up_thread=true;down_thread=true):MERGE2(min_interval=5000;max_interval=10000):
+FD(shun=true;timeout=2500;max_tries=5;up_thread=true;down_thread=true):
+VERIFY_SUSPECT(timeout=1500;down_thread=false;up_thread=false):
+pbcast.NAKACK (down_thread=true;up_thread=true;gc_lag=100;retransmit_timeout=3000):
+pbcast.STABLE(desired_avg_gossip=20000;down_thread=false;up_thread=false):
+pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;print_local_addr=false;down_thread=true;up_thread=true)
+read=true;up_thread=true)
+}}}
+
+On line 3, you see the parameter initial_hosts with only one value: localhost[7800]. This means that in this specific case, more than one node was running on the same "localhost" (and listened on port 7800). However, if you need to run nodes on different hosts, you configuration will look similar to this:
+{{{
+somehost1[7800],somehost2[7800],somehost3[7800];
+}}}
+For more information, refer to OSCache   [http://www.opensymphony.com/oscache/wiki/Clustering.html]documentation and JGroups documentation: http://www.jgroups.org/manual/html_single/index.html#d0e2510
+
 
 Back to [Features]
