@@ -90,7 +90,7 @@ pbcast.GMS(join_timeout=5000;join_retry_timeout=2000;shun=false;print_local_addr
 read=true;up_thread=true)
 }}}
 
-On line 3, you see the parameter initial_hosts with only one value: localhost[7800]. This means that in this specific case, more than one node was running on the same "localhost" (and listened on port 7800). However, if you need to run nodes on different hosts, you configuration will look similar to this:
+On line 3, you see the parameter initial_hosts with only one value: `localhost[7800]`. This means that in this specific case, more than one node was running on the same "localhost" (and listened on port 7800). However, if you need to run nodes on different hosts, you configuration will look similar to this:
 {{{
 somehost1[7800],somehost2[7800],somehost3[7800];
 }}}
