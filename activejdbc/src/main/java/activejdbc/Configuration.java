@@ -37,7 +37,6 @@ public class Configuration {
 
     private Properties modelsIndex = new Properties();
     private Properties properties = new Properties();
-    private static CacheManager cacheManager;
     final static Logger logger = LoggerFactory.getLogger(Configuration.class);
     
     private  Map<String, DefaultDialect> dialects = new HashMap<String, DefaultDialect>();
@@ -56,20 +55,6 @@ public class Configuration {
         }
         catch(Exception e){
             throw new InitException(e);
-        }
-
-
-        String cacheManagerClass = properties.getProperty("cache.manager");
-        if(cacheManagerClass != null){
-
-            try{
-                Class cmc = Class.forName(cacheManagerClass);
-                cacheManager = (CacheManager)cmc.newInstance();
-            }catch(Exception e){
-                throw new InitException("failed to initialize a CacheManager. Please, ensure that the property " +
-                        "'cache.manager' points to correct class which extends 'activejdbc.cache.CacheManager' class and provides a default constructor.", e);
-            }
-
         }
     }
     
@@ -95,7 +80,7 @@ public class Configuration {
     }
 
     public boolean cacheEnabled(){        
-        return cacheManager != null;
+        return properties.getProperty("cache.enabled", "false").equals("true");
     }
 
     DefaultDialect getDialect(MetaModel mm){
@@ -118,8 +103,16 @@ public class Configuration {
         return dialects.get(mm.getDbType());
     }
 
-
+    private static CacheManager cacheManager;
     public CacheManager getCacheManager(){
+        //this is a place of extension if a different cache mechanism is needed :
+        //http://java-source.net/open-source/cache-solutions
+
+        //note: race conditions are not important. In teh worst case, one manager will be discarded
+        if(cacheManager == null){
+            cacheManager = new OSCacheManager();
+        }
+
         return cacheManager;
     }
 }

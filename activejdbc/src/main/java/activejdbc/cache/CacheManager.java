@@ -62,9 +62,9 @@ public abstract class CacheManager {
     }
 
 
-    public abstract void doFlushAll();
+    abstract void doFlushAll();
     
-    public abstract void doFlushGroupCache(String group);
+    abstract void doFlushGroupCache(String group);
 
     /**
      * Flushes cache related to a specific group.

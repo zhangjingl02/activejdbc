@@ -18,36 +18,27 @@ limitations under the License.
 package javalite.common;
 
 import javalite.common.Util;
-import javalite.test.jspec.JSpecSupport;
 import junit.framework.TestCase;
-import org.junit.Test;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 /**
  * @author Igor Polevoy
  */
-public class UtilTest extends JSpecSupport {
+public class UtilTest extends TestCase {
 
-    @Test
-    public void testJoin(){
+    public static void testJoin(){
+
         String[] arr = {"first", "second", "third", "fourth"};
-        a("first, second, third, fourth").shouldBeEqual(Util.join(Arrays.asList(arr), ", "));
+        assertEquals("first, second, third, fourth", Util.join(Arrays.asList(arr), ", "));
     }
 
 
-    @Test
     public void testSplit(){
 
         String[] split = Util.split("Hello, Dolly, my darling ", ',');
-        a(split.length).shouldBeEqual(3);
-    }
+        assertEquals(split.length, 3);
 
-    @Test
-    public void shouldReadBytesFromStream() throws IOException {
 
-        byte[] bytes = Util.bytes(UtilTest.class.getResourceAsStream("/text.txt"));
-        a(new String(bytes)).shouldBeEqual("hello");
     }
 }

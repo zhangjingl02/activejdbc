@@ -65,26 +65,24 @@ public abstract class Model extends CallbackSupport{
      * Hydrates a this instance of model from a map. Only picks values from a map that match
      * this instance's attribute names, while ignoring the others.
      *
-     * @param attributesMap map containing values for this instance.
+     * @param attributes map containing values for this instance.
      */
-    protected  void hydrate(Map attributesMap) {
+    protected  void hydrate(Map attributes) {
 
         List<String> attributeNames = getMetaModelLocal().getAttributeNamesSkipId();
         this.attributes = new HashMap<String, Object> ();
 
-        Object id = attributesMap.get(getMetaModelLocal().getIdName());
+        Object id = attributes.get(getMetaModelLocal().getIdNameUpper());
+        if (id == null) {
+            id = attributes.get(getMetaModelLocal().getIdNameLower());
+        }
 
-        attributes.put(getMetaModelLocal().getIdName(), id);
+        this.attributes.put(getMetaModelLocal().getIdNameLower(), id);
 
         for (String attrName : attributeNames) {
-
-            if(attrName.equalsIgnoreCase(getMetaModelLocal().getIdName())){
-                continue;//skip ID, already set.
-            }
-
-            Object value = attributesMap.get(attrName.toLowerCase());
+            Object value = attributes.get(attrName.toLowerCase());
             if (value == null) {
-                value = attributesMap.get(attrName.toUpperCase());
+                value = attributes.get(attrName.toUpperCase());
             }
 
             //it is necessary to cache contents of a clob, because if a clob instance itself s cached, and accessed later,
@@ -92,9 +90,9 @@ public abstract class Model extends CallbackSupport{
             //This is only important for cached models. This will allocate a ton of memory if Clobs are large.
             //Should the Blob behavior be the same?
             //TODO: write about this in future tutorial
-            if(value != null && value instanceof Clob && getMetaModelLocal().cached() ){
+            if(value instanceof Clob && getMetaModelLocal().cached()){
                 this.attributes.put(attrName.toLowerCase(), Convert.toString(value));
-            }else if(value != null){
+            }else{
                 this.attributes.put(attrName.toLowerCase(), value);
             }
         }
@@ -138,7 +136,15 @@ public abstract class Model extends CallbackSupport{
 
         getMetaModelLocal().checkAttributeOrAssociation(attribute);
 
-        attributes.put(attribute.toLowerCase(), value);
+        if (attributes.get(attribute.toLowerCase()) != null) {
+            attributes.put(attribute.toLowerCase(), value);
+        }
+
+        if (attributes.get(attribute.toUpperCase()) != null) {
+            attributes.put(attribute.toUpperCase(), value);
+        }
+
+        attributes.put(attribute, value);
         return this;
     }
 
@@ -647,21 +653,22 @@ public abstract class Model extends CallbackSupport{
         }
 
         Object returnValue;
-        String attributeName = attribute.toLowerCase();
-        if((returnValue = attributes.get(attributeName.toLowerCase())) != null){
+        if((returnValue = attributes.get(attribute.toLowerCase())) != null){
             return returnValue;
-        }else if((returnValue = tryParent(attributeName)) != null){
+        }else if((returnValue = attributes.get(attribute.toUpperCase())) != null){
             return returnValue;
-        }else if((returnValue = tryPolymorphicParent(attributeName)) != null){
+        }else if((returnValue = tryParent(attribute)) != null){
             return returnValue;
-        }else if((returnValue = tryChildren(attributeName)) != null){
+        }else if((returnValue = tryPolymorphicParent(attribute)) != null){
             return returnValue;
-        }else if((returnValue = tryPolymorphicChildren(attributeName)) != null){
+        }else if((returnValue = tryChildren(attribute)) != null){
             return returnValue;
-        }else if((returnValue = tryOther(attributeName)) != null){
+        }else if((returnValue = tryPolymorphicChildren(attribute)) != null){
+            return returnValue;
+        }else if((returnValue = tryOther(attribute)) != null){
             return returnValue;
         }else{
-            getMetaModelLocal().checkAttributeOrAssociation(attributeName);
+            getMetaModelLocal().checkAttributeOrAssociation(attribute);
             return null;
         }
     }
@@ -967,15 +974,7 @@ public abstract class Model extends CallbackSupport{
     }
 
     protected static NumericValidationBuilder validateNumericalityOf(String... attributes) {
-        return ValidationHelper.addNumericalityValidators(Model.<Model>getDaClass(), toLowerCase(attributes));
-    }
-
-    private static String[] toLowerCase(String[] arr){
-        String[] newArr = new String[arr.length];
-        for (int i = 0; i < newArr.length; i++) {
-            newArr[i] = arr[i].toLowerCase();
-        }
-        return newArr;
+        return ValidationHelper.addNumericalityValidators(Model.<Model>getDaClass(), attributes);
     }
 
     /**
@@ -1016,7 +1015,7 @@ public abstract class Model extends CallbackSupport{
      * @return
      */
     protected static ValidationBuilder validateRegexpOf(String attribute, String pattern) {
-        return ValidationHelper.addRegexpValidator(Model.<Model>getDaClass(), attribute.toLowerCase(), pattern);
+        return ValidationHelper.addRegexpValidator(Model.<Model>getDaClass(), attribute, pattern);
     }
 
     /**
@@ -1026,7 +1025,7 @@ public abstract class Model extends CallbackSupport{
      * @return
      */
     protected static ValidationBuilder validateEmailOf(String attribute) {
-        return ValidationHelper.addEmailValidator(Model.<Model>getDaClass(), attribute.toLowerCase());
+        return ValidationHelper.addEmailValidator(Model.<Model>getDaClass(), attribute);
     }
 
     /**
@@ -1039,7 +1038,7 @@ public abstract class Model extends CallbackSupport{
      * @return
      */
     protected static ValidationBuilder validateRange(String attribute, Number min, Number max) {
-        return ValidationHelper.addRangevalidator(Model.<Model>getDaClass(), attribute.toLowerCase(), min, max);
+        return ValidationHelper.addRangevalidator(Model.<Model>getDaClass(), attribute, min, max);
     }
 
     /**
@@ -1049,7 +1048,7 @@ public abstract class Model extends CallbackSupport{
      * @return
      */
     protected static ValidationBuilder validatePresenceOf(String... attributes) {
-        return ValidationHelper.addPresensevalidators(Model.<Model>getDaClass(), toLowerCase(attributes));
+        return ValidationHelper.addPresensevalidators(Model.<Model>getDaClass(), attributes);
     }
 
     /**
@@ -1677,7 +1676,7 @@ public abstract class Model extends CallbackSupport{
 
         List<Object> values = new ArrayList<Object>();
         for (String attribute : attrs) {
-            values.add(this.attributes.get(attribute));
+            values.add(get(attribute));
         }
         String query = metaModelLocal.getDialect().createParametrizedInsert(metaModelLocal);
         try {
@@ -1685,9 +1684,14 @@ public abstract class Model extends CallbackSupport{
             if(metaModelLocal.cached()){
                 QueryCache.instance().purgeTableCache(metaModelLocal.getTableName());
             }
-            
-            attributes.put(metaModelLocal.getIdName(), id);
-
+            String idName = metaModelLocal.getIdName();
+            if(attributes.containsKey(metaModelLocal.getIdNameLower())){
+                attributes.put(idName.toLowerCase(), id);
+            }else if(attributes.containsKey(metaModelLocal.getIdNameUpper())){
+                attributes.put(idName.toUpperCase(), id);
+            } else {
+                attributes.put(idName, id);
+            }
             fireAfterCreate(this);
             return true;
         } catch (Exception e) {
