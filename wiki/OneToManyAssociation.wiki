@@ -35,7 +35,7 @@ public class User extends Model {}
 
 Address:
 {{{
-public class User extends Model {}
+public class Address extends Model {}
 }}}
 
 As you can see from the schema, the table ADDRESSES, has a column called {{{user_id}}}. Just because table ADDRESSES has this column, ActiveJDBC assumes that there is a one to many relationship here, and makes special arrangements.
