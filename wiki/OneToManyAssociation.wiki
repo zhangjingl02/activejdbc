@@ -95,6 +95,15 @@ public class Address extends Model {}
 }}}
 The @!BelongsTo annotation will ensure that API on both ends will work. ActiveJDBC does not have annotation @!HasMany, since I believe this would be redundant. 
 
+In cases a model belongs to many parents, you can use this annotation:
+{{{
+@BelongsToParents({ 
+@BelongsTo(foreignKeyName="key_id",parent=Keyboard.class), 
+@BelongsTo(foreignKeyName="mother_id",parent=Motherboard.class) 
+}) 
+}}}
+As usual though, you only need it if names of foreign keys do not conform to the conventions.
+
 =Foreign Key=
 The Foreign Key in the ADDRESSES table does not have to be a real Foreign Key constraint. ActiveJDBC(much like ActiveRecord) does not check for it's presence. As long as there is a column named according to this convention, ActiveJDBC assumes that there is a relationship. It does not hurt to have the actual constraint in the DB if you are using other means of accessing data. 
 
