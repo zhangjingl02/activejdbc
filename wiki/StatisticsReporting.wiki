@@ -17,7 +17,7 @@ On the next start of the application, ActiveJDBC will collect statistical data o
 
 The API to get statistical data is:
 {{{
-List<QueryStats>  statistics = statsList;Registry.instance().getStatisticsQueue().getReportSortedBy("avg");
+List<QueryStats>  statistics = Registry.instance().getStatisticsQueue().getReportSortedBy("avg");
 }}}
 Where argument to `getReportSortedBy(...)` methods can be one of: "total", "avg", "min", "max", "count" and this indicates how you want to sort the results (the values are self-explanatory). The `QueryStats` object is a simple bean which contains the query text, as well as values: "total", "avg", "min", "max", "count".
 
