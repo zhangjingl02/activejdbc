@@ -23,7 +23,7 @@ Where argument to `getReportSortedBy(...)` methods can be one of: "total", "avg"
 
 
 =How to generate non - ActiveJDBC statistics report=
-In some cases, you might want to accumulate statistical information for actions in your application which have nothing to do with ActiveJDBC. YOu can then perform this operation:
+In some cases, you might want to accumulate statistical information for actions in your application which have nothing to do with ActiveJDBC. You can then perform this operation:
 {{{
 Registry.instance().getStatisticsQueue().enqueue(new QueryExecutionEvent(query, System.currentTimeMillis() - start));
 }}}
