@@ -6,7 +6,7 @@ ActiveJDBC can report on times queries are taking to execute. If statistics coll
 
 
 = Configuring ActiveJDBC =
-In order to configure ActiveJDBC to collect statistical data on queries, you need to add one property to activejdbc.properties file:
+In order to configure ActiveJDBC to collect statistical data on queries, you need to add one property to `activejdbc.properties` file:
 {{{
 collectStatistics = true
 }}}
