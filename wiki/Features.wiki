@@ -16,7 +16,7 @@
   * [GenerationOfXml]
   * [SurrogatePrimaryKeys]
   * [LifecycleCallbacks]
-  * [StatisticsReporting] - to be added
+  * [StatisticsReporting]
   * [LazyAndEager]
   * [Logging]
   * [Instrumentation]
