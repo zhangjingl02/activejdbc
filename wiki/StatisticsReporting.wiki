@@ -31,4 +31,4 @@ Registry.instance().getStatisticsQueue().enqueue(new QueryExecutionEvent(query, 
 Where "query" is your custom operation, and "start" was a time before it started. The statistical information for your operation will then be accumulated and available for reporting just as any other ActioveJDBC query. 
 
 
-Back to Features
+Back to [Features]
