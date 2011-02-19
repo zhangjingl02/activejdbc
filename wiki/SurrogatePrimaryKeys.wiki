@@ -95,7 +95,7 @@ The usage code, behavior and expectations will be exactly the same with this str
 
 
 =PosgreSQL usage=
-PosgreSQL has a capability similar to that of MySQL - no sequences are required:
+PosgreSQL has a capability similar to that of MySQL, but different syntax - no sequences are required:
 
 {{{
 CREATE TABLE people (
@@ -108,5 +108,6 @@ CREATE TABLE people (
 }}}
 
 The keyword 'SERIAL' in PostgrerSQL does the same as MuSQL's AUTO_INCTREMENT
+
 
 Back to [Features]
