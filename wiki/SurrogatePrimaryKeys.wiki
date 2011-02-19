@@ -95,7 +95,18 @@ The usage code, behavior and expectations will be exactly the same with this str
 
 
 =PosgreSQL usage=
-to be continued...
+PosgreSQL has a capability similar to that of MySQL - no sequences are required:
 
+{{{
+CREATE TABLE people (
+   id SERIAL PRIMARY KEY, 
+   name VARCHAR(56) NOT NULL, 
+   last_name VARCHAR(56), 
+   dob DATE, graduation_date DATE, 
+   created_at TIMESTAMP, 
+   updated_at TIMESTAMP);
+}}}
+
+The keyword 'SERIAL' in PostgrerSQL does the same as MuSQL's AUTO_INCTREMENT
 
 Back to [Features]
