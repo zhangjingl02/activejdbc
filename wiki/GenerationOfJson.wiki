@@ -31,7 +31,7 @@ The XML produced will look something like this:
 
 this of course depends on the table structure. The boolean parameter to the method `toJson()` is whether to generate human readable format or a single string. 
 
-=Include attributes into generated =
+=Specify output attributes for generated JSON =
 
 A variation on the example above is to provide a list of attributes that you are interested in, so that only these attributes are included:
 
@@ -104,7 +104,7 @@ result:
 }}}
 
 =Generate JSON from a resultset=
-Generating JSIN from a LazyList is equally easy:
+Generating JSON from a LazyList is equally easy:
 {{{
 LazyList<User> personList = User.findAll().orderBy("id").include(Address.class);
 String json = personList.toJson(true);
@@ -209,7 +209,7 @@ An example of generated JSON:
 
 }}}
 
-as you can see, the two users were generated. Since the include was used, the corresponding children from the ADDRESSES table were queried too for their JSON. 
+as you can see, the two users were generated. Since the `include()` was used, the corresponding children from the ADDRESSES table were queried too for their JSON. 
 
 
 Back to [Features]
