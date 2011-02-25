@@ -12,10 +12,10 @@ In more complicated situation, they probably would write some XML generation cod
 Here is code that will provide stock XML from a model:
 {{{
 Person p  = (Person)Person.findById(1);
-String xml = p.toJson(true);
+String json = p.toJson(true);
 }}}
 
-The XML produced will look something like this:
+The JSON produced will look something like this:
 {{{
 {
   "type":"activejdbc.test_models.Person",
