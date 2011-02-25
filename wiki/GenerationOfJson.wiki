@@ -1,4 +1,4 @@
-#summary how to generate JSOM from models
+#summary how to generate JSON from models
 
 <wiki:toc max_depth="2" />
 
