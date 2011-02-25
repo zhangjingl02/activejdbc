@@ -53,7 +53,7 @@ When a model is has relationships, the generated JSON will loop through them to 
 {{{
 List<User> personList = User.findAll().orderBy("id").include(Address.class);
 User u = personList.get(0);
-String json = u.toJson(true);}}}
+String json = u.toJson(true);
 }}}
 
 result:
