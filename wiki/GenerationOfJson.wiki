@@ -5,11 +5,11 @@
 =Introduction=
 In context of a web application, especially when dealing with Ajax, it is handy to have your classes  convert to to  JSON to send to a browser. If you have a complex model with custom classes to be sent over, you will most likely write your JSON generation code, if however all you need is to convert ActiveJDBC models to JSON, this functionality is already available from your models without extra effort. 
 
-In more complicated situation, they probably would write some XML generation code. However under simple condition, classes Model and LazyList already provide the basics. 
+In more complicated situation, they probably would write some JSON generation code. However under simple condition, classes Model and LazyList already provide the basics. 
 
 =Generate simple JSON from a model=
 
-Here is code that will provide stock XML from a model:
+Here is code that will provide stock JSON from a model:
 {{{
 Person p  = (Person)Person.findById(1);
 String json = p.toJson(true);
