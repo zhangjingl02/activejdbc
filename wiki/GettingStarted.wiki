@@ -128,6 +128,11 @@ Employee.deleteAll();
 List<Employee> employees = Employee.findAll();
 }}}
 
+
+=Same project using Ant=
+If you are not using Maven, you can use Ant. Example of exactly the same project with all necessary dependencies can be found here: https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/
+Please see README file there.
+
 =Conclusion=
 I hope this quick introduction provides enough information to get started. It also shows how simple ActiveJDBC APIs are. The project has many advanced features, such as automatic recognition of associations, caching, validations, polymorphic associations, etc. The examples on this page can be found and executed in the included Maven project here: https://activejdbc.googlecode.com/svn/trunk/examples/simple-example/
 
