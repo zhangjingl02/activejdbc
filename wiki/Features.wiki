@@ -1,4 +1,5 @@
 #summary ActiveJDBC features, TOC
+  * [SettersAndGetters]
   * [RecordSelection]
   * [SurrogatePrimaryKey]
   * [LimitAndSort]
