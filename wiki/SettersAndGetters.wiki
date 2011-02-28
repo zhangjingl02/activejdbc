@@ -29,7 +29,7 @@ public class Person extends Model{
    }
 }
 }}}
-This will provide a safety net to those wishing some compiler static checking
+This will provide a safety net to those wishing some compiler static checking.
 Same goes for getters. If you are starting out with ActiveJDBC, I suggest you do not write setters and getters, but rather use the provided methods. After a day or two you will be surprised you ever wrote them before. 
 
 =Type conversion getters=
