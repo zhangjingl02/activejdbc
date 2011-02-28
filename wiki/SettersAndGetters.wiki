@@ -67,4 +67,6 @@ id, updated_at, graduation_date, dob, name, last_name, created_at
 }}}
 which gives me all the information I need to start writing a real test. When I'm done with the test, I have a piece of durable code which has captured required model behaviour. I then proceed to implement the rest of the model code - necessary validations, other code, until the test starts to pass.
  
+
+
 Back to [Features]
