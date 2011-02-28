@@ -129,7 +129,7 @@ List<Employee> employees = Employee.findAll();
 }}}
 
 
-=Same project using Ant=
+=Sample project using Ant=
 If you are not using Maven, you can use Ant. Example of exactly the same project with all necessary dependencies can be found here: https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/
 Please see README file there.
 
