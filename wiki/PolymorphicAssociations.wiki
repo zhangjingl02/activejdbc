@@ -38,7 +38,7 @@ Operations themselves are no different from regular ActiveJDBC on to many operat
 
 ==Adding and searching for polymorphic children==
 {{{
-Product toyBasket =  Product.findById(100);
+Product p =  Product.findById(100);
 p.add(Tag.create("tag", "basket"));
 p.add(Tag.create("tag", "toy"));
 List<Tag> tags = p.getAll(Tag.class);
