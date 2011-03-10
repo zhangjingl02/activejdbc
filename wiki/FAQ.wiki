@@ -1,0 +1,9 @@
+#summary ActiveJDBC: FAQ
+
+= What the heck is instrumentation? =
+
+See this page: [Instrumentation]
+
+=How to integrate AJ projects into Netbeans?=
+
+Look here: [NetbeansIntegration]
