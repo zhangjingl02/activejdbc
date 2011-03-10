@@ -12,7 +12,7 @@ I will try to describe the process and bottlenecks for such goal
 
  * Create new Netbeans project
  * Add dependent libraries:
-   * Right click on the newly created project => Properties => Libraries
+   * Right click on the newly created project -> Properties -> Libraries
    * Add "Compile" libraries from [https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/lib/]
    * Add "Processor" libraries from [https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/build_time_libs/]
    * Close
