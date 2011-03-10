@@ -1,5 +1,8 @@
 #summary ActiveJDBC: FAQ
 
+<wiki:toc max_depth="2" />
+
+
 = What the heck is instrumentation? =
 
 See this page: [Instrumentation]
