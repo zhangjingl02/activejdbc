@@ -1,0 +1,37 @@
+#summary How to integrate activejdbc instrumentation into Netbeans
+
+= Introduction =
+
+There were some questions regarding integration netbeans and activejdbc. 
+I will try to describe the process and bottlenecks for such goal
+
+
+= Details =
+
+ * Create new netbeans project
+ * Add dependent libraries:
+   * Right click on the newly created project => Properties => Libraries
+   * Add "Compile" libraries from [https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/lib/]
+   * Add "Processor" libraries from [https://activejdbc.googlecode.com/svn/trunk/examples/ant-example/build_time_libs/]
+   * Close
+ * Click "Files" tab and open build.xml
+ * Add "-post-compile" target :
+ {{{
+<target name="-post-compile">
+    <java classname="activejdbc.instrumentation.Main" failonerror="true">
+        <sysproperty key="outputDirectory" value="${build.classes.dir}"/>
+        <classpath>
+            <pathelement path="${build.classes.dir}" />
+            <pathelement path="${javac.classpath}" />
+            <pathelement path="${javac.processorpath}" />
+        </classpath>
+    </java>
+</target>
+ }}}
+ * Save and close the file
+
+If you are running project from netbeans you need to perform additional step.
+Right click on the project => Properties => Compiling => Uncheck "Compile on save"
+
+
+That's all.
