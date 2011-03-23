@@ -57,20 +57,40 @@ cache.enabled=true
 
 
 Without this file with one property no caching will be turned on.
-=Cache purging=
+=Automatic cache purging=
 
 If you examine the log from above, you will see that after an insert statement into the "LIBRARIES" table, the system is purging cache related to this table, as well as "BOOKS" table. ActiveJDBC does this since the cache in memory might be potentially of out sync with the data in the DB, and hence will be purged. Related tables' caches are also purged. Since there exists relationship: library has many books,  the books cache could also be stale, and this is a reason why a table "BOOKS" purged as well. 
+
+=Manual cache purging=
 
 If you want to manually purge caches (in cases you make destructive data operations outside Model API), you can do so:
 {{{
 activejdbc.cache.QueryCache.instance().purgeTableCache("books");
 }}}
 
-=Cache provider=
-ActiveJDBC has a simple plugin framework for adding cache providers, but currently supports only one: [http://www.opensymphony.com/oscache/ OSCache]. OSCache is a known, well tested cache solution for Java, which supports many ways to cache data(memory, file system, clustering, etc.). For more information, see their documentation [http://www.opensymphony.com/oscache/wiki/Documentation.html OSCache Documentation].
+or:
+{{{
+Books.purgeCache();
+}}}
+
 
 =What to cache=
 While caching is a complex issue, I can suggest caching predominantly lookup data. Lookup data is something that does not change very frequently. If you start caching everything, you might run into a problem of cache thrashing where you fill cache with data, and purge it soon after, without having a benefit of caching. Instead of improving performance, you will degrade it with extra CPU, RAM and IO (is cluster is configured) used and little or no benefit of having a cache in the first place. 
+
+=Things to be careful about=
+ActiveJDBC manages caches for models and  their respective relationships (read above), but in some cases you will use a query that ties together unrelated models:
+{{{
+List<User> users = User.where("id not in (select user_id from restricted_users)");
+}}}
+
+If there exists a model User that is cached, and model RestrictedUser, and these tables/models have no relationship, then the line above could present a logical problem. If you execute the line above, and later change content of RESTRICTED_USERS table, then the query above will not see the change, and will return stale data. Developers need to be aware of this, and deal with  these issues carefully. Whenever you change data in RESTRICTED_USERS table, please purge User model:
+{{{
+User.purgeCache();
+}}}
+
+
+=Cache provider=
+ActiveJDBC has a simple plugin framework for adding cache providers, but currently supports only one: [http://www.opensymphony.com/oscache/ OSCache]. OSCache is a known, well tested cache solution for Java, which supports many ways to cache data(memory, file system, clustering, etc.). For more information, see their documentation [http://www.opensymphony.com/oscache/wiki/Documentation.html OSCache Documentation].
 
 =OSCache configuration for cluster=
 In case your application is deployed in a cluster, and you use caching in ActiveJDBC, you will need to configure clustering. This is necessary so that when your application invokes a destructive action, a proper purge events are distributed in a cluster. OSCache is very efficient, as it does not share the actual data across cluster. Each cluster will have its own caches based on a usage on that cluster. Whenever a purge event is generated on one node in the cluster, this event will be broadcast by OSCache to other nodes, effectively blowing the same caches across entire cluster. These events are lightweight and very fast (UDP, using JGroups).
