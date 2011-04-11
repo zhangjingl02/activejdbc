@@ -145,7 +145,7 @@ CREATE TABLE people (
    updated_at TIMESTAMP);
 }}}
 
-The keyword 'SERIAL' in PostgrerSQL does the same as MuSQL's AUTO_INCTREMENT
+The keyword 'SERIAL' in PostgrerSQL does the same as MySQL's AUTO_INCREMENT
 
 
 
