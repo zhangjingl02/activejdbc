@@ -1,10 +1,6 @@
 #summary usage of primary keys in ActiveJDBC
+=<font color="red">THIS PAGE IS DEPRECATED, PLEASE REFER TO:</font> [SurrogatePrimaryKeys]=
 
-<font color="red">
-
-THIS PAGE IS DEPRECATED, PLEASE REFER TO [SurrogatePrimaryKeys]
-
-</font>
 = Introduction =
 Like !ActiveRecord, ActiveJDBC relies on surrogate primary keys in tables. 
 For more information on surrogate keys, read here: [http://en.wikipedia.org/wiki/Surrogate_key]
