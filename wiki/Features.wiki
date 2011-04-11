@@ -1,7 +1,7 @@
 #summary ActiveJDBC features, TOC
   * [SettersAndGetters]
   * [RecordSelection]
-  * [SurrogatePrimaryKey]
+  * [SurrogatePrimaryKeys]
   * [LimitAndSort]
   * [RecordCreation]
   * [BatchOperations]
@@ -16,7 +16,6 @@
   * [ClobSupportAndCaching]
   * [GenerationOfXml]
   * [GenerationOfJson]
-  * [SurrogatePrimaryKeys]
   * [LifecycleCallbacks]
   * [StatisticsReporting]
   * [LazyAndEager]
