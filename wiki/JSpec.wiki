@@ -1,5 +1,7 @@
 #summary JSpec documentation
 
+<wiki:toc max_depth="2" />
+
 = Introduction =
 This pge describes functionality and usage if a tiny testing library called JSpec. JSpec was originated from ActiveJDBC project and was inspired by RSpec from the Ruby world. 
 
