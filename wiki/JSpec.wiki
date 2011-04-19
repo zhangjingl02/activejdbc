@@ -184,7 +184,7 @@ These methods are to check if the tested and expected references point to the sa
 
 ==Expecting difference==
 
-Often times you need to ensure that a number before an after the operation is different. For instance, this could be a total count of specific records in a table, or a size of a list. 
+Often times you need to ensure that some number before and after the operation is different. For instance, this could be a total count of specific records in a table, or a size of a list. 
 Here is an example of using a difference expectation with JSpec:
 
 {{{
