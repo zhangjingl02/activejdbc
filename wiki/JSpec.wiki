@@ -182,7 +182,7 @@ a( 2 * 2 == 5).shouldBeFalse();
 
 These methods are to check if the tested and expected references point to the same (or not) object.
 
-=Expecting difference=
+==Expecting difference==
 
 Often times you need to ensure that a number before an after the operation is different. For instance, this could be a total count of specific records in a table, or a size of a list. 
 Here is an example of using a difference expectation with JSpec:
