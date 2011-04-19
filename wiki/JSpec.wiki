@@ -181,3 +181,23 @@ a( 2 * 2 == 5).shouldBeFalse();
 ==shouldBeTheSameAs  and shouldNotBeTheSameAs==
 
 These methods are to check if the tested and expected references point to the same (or not) object.
+
+=Expecting difference=
+
+Often times you need to ensure that a number before an after the operation is different. For instance, this could be a total count of specific records in a table, or a size of a list. 
+Here is an example of using a difference expectation with JSpec:
+
+{{{
+expect(new DifferenceExpectation(Person.find("last_name like ?", "Smith").size()) {
+  public Object exec() {
+     Person.updateAll("last_name = ?", "Smith");
+     return Person.find("last_name like ?", "Smith").size();
+  }
+});
+}}}
+
+In the code snippet above, the constructor of `DifferenceExpectation(..)` is passed an initial value, and the method `exec()` returns a final value. The initial and final are compared to be different at the end of a test. If they are the same, then the test fails. 
+An example message:
+{{{
+javalite.test.jspec.TestException: Objects: '1' and '1' are equal, but they should not be
+}}}
