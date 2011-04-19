@@ -48,7 +48,7 @@ All the three methods 'the', 'a' and 'it' return the expectation object.  The 'a
 
 Additionally, there is an interesting feature of the 'a' and 'the' methods: they are numeric type agnostic. In JUnit this will fail:
 {{{
-assertEqual(2, 3L); // will fail
+assertEqual(3, 3L); // will fail
 }}}
 while the two numbers are identical in value for all practical purposes, the JUnit assertion will fail just because the types are different, one being an Integer, and another a Long.
 The same test in JSpec using either 'a' or 'the' will succeed:
