@@ -9,7 +9,7 @@ A DB migration is a step for "developing" your database. This means every time y
   * developers do not need to learn yet another language and conventions
   * DBAs can help tweak migration code. 
 
-After surveying a number of Java projects for DB migrations, we decided to use Carbon 5 project [http://code.google.com/p/c5-db-migration/ c5-db-migration]. Carbon 5 is very close to the idea of migrations, has a good community and support, but most of all, on all of out MySQL and Oracle projects we never had issues with it and never needed support. 
+After surveying a number of Java projects for DB migrations, we decided to use Carbon 5 project [http://code.google.com/p/c5-db-migration/ c5-db-migration]. Carbon 5 is very close to the idea of migrations, has a good community and support, but most of all, on all of our MySQL and Oracle projects we never had issues with it and never needed support. 
 
 
 = Configuration of Carbon 5 =
@@ -55,12 +55,12 @@ mvn db-migration:new -Dname=create_person_table
 
 this action would create an empty file:
 {{{
-./src/main/db/migrations/create_person_table_create_person_table.sql
+./src/main/db/migrations/20101112230703_create_person_table.sql
 }}}
 
-After that, add this code to this file:
+After that, add this code to the file:
 {{{
-CREATE TABLE posts (
+CREATE TABLE people (
   id  int(11) DEFAULT NULL auto_increment PRIMARY KEY,
   first_name VARCHAR(128),
   last_name VARCHAR(128),
