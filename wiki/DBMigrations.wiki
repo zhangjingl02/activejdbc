@@ -48,7 +48,7 @@ Basically the simplest-most configuration would be:
 
 =Create migration=
 
-After this, you can execute this command:
+To create a new migration, execute this command:
 {{{
 mvn db-migration:new -Dname=create_person_table
 }}}
