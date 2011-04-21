@@ -133,7 +133,7 @@ class Validation{
 }}}
 and the expectation is:
 {{{
-Validation validation = new Validation
+Validation validation = new Validation();
 a(validation).shouldHave("errors");
 }}}
 
