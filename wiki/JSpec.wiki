@@ -152,7 +152,7 @@ javalite.test.jspec.TestException: Object is null, while it is not expected
 }}}
 
 
-==shouldBeType==
+==shouldBeType and shouldBeA==
 
 Sets up expectation for a tested object's type:
 
@@ -164,6 +164,9 @@ If expectation not met, the error can be:
 {{{
 javalite.test.jspec.TestException: class java.lang.String is not class java.lang.Long
 }}}
+
+`shouldBeA` is a synonym of `shouldBeType`, use either one for a better sounding sentence.
+
 
 ==shouldBeFalse and shouldBeTrue==
 
