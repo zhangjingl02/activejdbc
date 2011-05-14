@@ -39,7 +39,7 @@ ActiveJDBC provides a number of type conversion getters:
 
 Person p = Person.findById();
 String  name = p.getString("name");
-Timestamp dob = p.getTImestamp("dob");
+Timestamp dob = p.getTimestamp("dob");
 ...
 }}}
 ActiveJDBC will do all possible to convert your data into the type. This also goes for CLOBs:
