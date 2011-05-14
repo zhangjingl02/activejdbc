@@ -8,7 +8,7 @@ Java development is all about getters and setters. Ever since the Java Beans fra
 = Built in getters and setters =
 ActiveJDBC provides two base methods for getting information from DB and putting it in:
 {{{
-Person p = Person.finsById();
+Person p = Person.findById();
 name = p.get("name");
 }}}
 
@@ -37,7 +37,7 @@ Same goes for getters. If you are starting out with ActiveJDBC, I suggest you do
 ActiveJDBC provides a number of type conversion getters:
 {{{
 
-Person p = Person.finsById();
+Person p = Person.findById();
 String  name = p.getString("name");
 Timestamp dob = p.getTImestamp("dob");
 ...
