@@ -18,14 +18,15 @@ Usually, at this point  it is time to write a test:
 
 {{{
 1. public class PersonSpec{
-2.   public void shouldValidatePresenceOfFirstNameAndLastName(){
-3.      Person p = new Person();
-4.      a(p).shouldNotBe("valid");
-5.   }
-6. }
+2.   @Test
+3.   public void shouldValidatePresenceOfFirstNameAndLastName(){
+4.      Person p = new Person();
+5.      a(p).shouldNotBe("valid");
+6.   }
+7. }
 }}}
 
-When the code above runs, the spec is in red because the class Person does not specify any validations yet, and therefore it is valid. This test will fail on line 4.
+When the code above runs, the spec is in red because the class Person does not specify any validations yet, and therefore it is valid. This test will fail on line 5.
 However, our goal  for this model is not be valid if it is missing first and last name attributes.
 In order to make it pass, you need to add validations to the model:
 
@@ -40,17 +41,18 @@ At this point, we need to add values for first and last name, as well as an expe
 
 {{{
 1. public class PersonSpec{
-2.   public void shouldValidatePresenceOfFirstNameAndLastName(){
-3.      Person p = new Person();
-4.      a(p).shouldNotBe("valid");
-5.      p.set("first_name", "Homer");
-6.      p.set("last_name", "Simpson");
-7.      a(p).shouldBe("valid");
-8.   }
-6. }
+2.   @Test
+3.   public void shouldValidatePresenceOfFirstNameAndLastName(){
+4.      Person p = new Person();
+5.      a(p).shouldNotBe("valid");
+6.      p.set("first_name", "Homer");
+7.      p.set("last_name", "Simpson");
+8.      a(p).shouldBe("valid");
+9.   }
+10.}
 }}}
 
-At line 4, the test passes as before because the model still does not have the first and last names, but on lines 5 and 6, we ad these, and on line 7 we expect the model to finally be valid.
+At line 4, the test passes as before because the model still does not have the first and last names, but on lines 6 and 7, we add these, and on line 8 we expect the model to finally be valid.
 
 We now have a complete specification of behavior and at the same time we built an implementation. It is typical to switch from spec to a model and back a few times until all behavior is documented in the spec and implementation is complete to satisfy it. 
 
