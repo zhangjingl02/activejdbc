@@ -8,7 +8,7 @@ Test methods are also written in a style where a name of a method is a phrase re
 
 Usually in the Java world, people call tests ... tests. In the Ruby world they are called "specs", or specifications. This name s fitting better if you practice a true TDD, because  you start thinking of them as specifications of behavior rather than testing of code after it is written. While the change is in the name, it might be enough to have a slight shift in mentality towards TDD.
 
-=Start writing specs early=
+=Example process of writing a specification=
 
 {{{
 public class Person extends Model{}
