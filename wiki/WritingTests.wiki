@@ -54,4 +54,4 @@ At line 4, the test passes as before because the model still does not have the f
 
 We now have a complete specification of behavior and at the same time we built an implementation. It is typical to switch from spec to a model and back a few time until all behavior is documented in the spec and implementation is complete to satisfy it. 
 
-Back to [Featires]
+Back to [Features]
