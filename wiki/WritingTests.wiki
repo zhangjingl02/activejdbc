@@ -1,0 +1,53 @@
+#summary how to write model tests
+
+= Introduction =
+Writing models' test is easy. While you can use any Java technology to do this, the AvtiveJDBC project internally used a combination JUnit and [JSpec].
+Test methods are also written in a style where a name of a method is a phrase reflecting the expectation of the test.
+
+= Call tests specifications =
+
+Usually in the Java world, people call tests ... tests. In the Ruby world they are called "specs", or specifications. This name s fitting better if you practice a true TDD, because  you start thinking of them as specifications of behavior rather than testing of code after it is written. While the change is in the name, it might be enough to have a slight shift in mentality towards TDD.
+
+=Start writing specs early=
+
+{{{
+public class Person extends Model{}
+}}}
+
+Usually, at this point  it is time to write a test:
+
+{{{
+1. public class PersonSpec{
+2.   public void shouldValidatePresenceOfFirstNameAndLastName(){
+3.      Person p = new Person();
+4.      a(p).shouldNotBe("valid");
+5.   }
+6. }
+}}}
+
+When the code above runs, the spec is in red because the class Person does not specify any validations yet, and therefore is valid. This test will fail on line 4.
+In order to make it pass, you need to add validations to the model:
+
+{{{
+public class Person extends Model{
+   validatePresenceOf("first_name", "last_name");
+}
+}}}
+When you re-run test, it will pass.
+
+At this point, we need to add values for first and last name, as well as an expectation of a valid state of the model:
+
+{{{
+1. public class PersonSpec{
+2.   public void shouldValidatePresenceOfFirstNameAndLastName(){
+3.      Person p = new Person();
+4.      a(p).shouldNotBe("valid");
+5.      p.set("first_name", "Homer");
+6.      p.set("last_name", "Simpson");
+7.      a(p).shouldBe("valid");
+8.   }
+6. }
+}}}
+
+
+We now have a complete specification of behavior and at the same time we built an implementation. It is typical to switch from spec to a model and back a few time until all behavior is documented in the spec and implementation is complete to satisfy it. 
