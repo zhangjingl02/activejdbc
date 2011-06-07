@@ -33,7 +33,7 @@ Registry.instance().addListener(Role.class, myListener);
 
 or like this:
 {{{
-Role.addListener(Role.class, myListener);
+Role.addListener(myListener1, myListener2,...);
 }}}
 
 this assuming that Role is a model. You can implement either  the `CallbackListener`  interface or extend `CallbackSupport` where all methods are implemented with blank bodies and only override the ones you need.
