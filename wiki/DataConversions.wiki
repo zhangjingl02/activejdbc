@@ -1,4 +1,5 @@
 #summary how ActiveJDBC performs data conversions
+<wiki:toc max_depth="2" />
 
 = Pass-through framework =
 
