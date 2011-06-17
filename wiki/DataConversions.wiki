@@ -78,6 +78,15 @@ activejdbc.DBException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Inc
 	at com.mysql.jdbc.ServerPreparedStatement.executeInternal(ServerPreparedStatement.java:693)
 }}}
 
+=Different data types for the same attribute=
+
+Is this possible? Yes, for instance, take this example: 
+{{{
+p.set("dob", "2011-12-3");
+p.saveIt();
+}}}
+This will work for MySQL, and the driver will convert the String "2011-12-3" during insert or update. However, if you retain a reference to this model, the internal value type is going to remain String.
+
 =Should I care about types?=
 Not so much. Just use the models with types you think are appropriate, and ActiveJDBC together with the driver will handle most of what you need. In case you get a conversion exception from the driver, do a due diligence then.
 
