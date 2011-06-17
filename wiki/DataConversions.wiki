@@ -76,3 +76,5 @@ activejdbc.DBException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Inc
 	at com.mysql.jdbc.ServerPreparedStatement.serverExecute(ServerPreparedStatement.java:1169)
 	at com.mysql.jdbc.ServerPreparedStatement.executeInternal(ServerPreparedStatement.java:693)
 }}}
+
+back to [Features]
