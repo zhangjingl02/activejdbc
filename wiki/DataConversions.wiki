@@ -44,7 +44,7 @@ p.saveIt();
 you are going to get an exception from the DBMS itself, if it cannot convert the type:
 {{{
 
-activejdbc.DBException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect date value: '1' for column 'dob' at row 1, Query: INSERT INTO students (first_name, dob, last_name) VALUES (?, ?, ?), params: Marylin,1,Monroe
+activejdbc.DBException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Incorrect date value: '1' for column 'dob' at row 1, Query: INSERT INTO students (first_name, dob, last_name) VALUES (?, ?, ?), params: John,1,Doe
 	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:2868)
 	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1573)
 	at com.mysql.jdbc.ServerPreparedStatement.serverExecute(ServerPreparedStatement.java:1169)
