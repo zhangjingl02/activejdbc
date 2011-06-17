@@ -5,7 +5,7 @@
 ActiveJDBC is a *pass-through framework*. This means that for the most part, it does not attempt to convert data types and relies on the underlying driver for most data conversions during read and write operations. Most database drivers do a great deal of conversion
 
   * *select operations*: during select operations, the driver will populate your models with whatever types that are mapped from DB table columns to appropriate Java types.
-  * *insert/update operations*
+  * *insert/update operations*: during inserts or updates, the DBMS driver will perform conversions where necessary and possible. In cases a conversion is not possible, you are going to get a runtime exception from DBMS (see below)
 
 =How to see mapped type=
 This is pretty easy, insert a record into a table using standard DBMS tools, and then query it like this:
@@ -18,17 +18,43 @@ System.out.println("DOB type: " + p.get("dob").getClass());
 
 =Convenience conversion methods=
 
-include clobs
+ActiveJDBC provides a number of getter and setter methods for conversion. Most conversions use the underlying [http://code.google.com/p/activejdbc/source/browse/trunk/javalite-common/src/main/java/javalite/common/Convert.java Convert] class.
+Here are some examples:
 
-=Typed setters and getters=
+{{{
+
+Date date = person.getDate("dob");
+Boolean projectCompleted = project.getBoolean("completed");
+...
+}}}
+
+Most all types can be converted to String, including a CLOB. Consider this example, where column CONTENT is defined as CLOB:
+
+{{{
+String text = article.getString("content");
+}}}
+
+=Custom setters and getters=
 
 If you like more control over types, you can provide typed getters and setters:
 
+{{{
+public class Person extends Model{
+...
+public void setName(String name){
+   set("name", name);
+}
+...
+}
+}}}
+and then use it like this:
 {{{
 Person p = new Person();
 p.setName("John");
 p.setDob(new Date(12345L));
 }}}
+
+For more information on setters and getters, see [SettersAndGetters]
 
 =What happens if I stick a wrong type?=
 
@@ -37,7 +63,7 @@ If you do this:
 Student p = new Student();
 p.set("first_name", "John");
 p.set("last_name", "Doe");
-p.set("dob", 1); // ===>>  this is wrong type for BOB field
+p.set("dob", 1); // ===>>  this is wrong type for DOB field
 p.saveIt();
 }}}
 
