@@ -78,4 +78,7 @@ activejdbc.DBException: com.mysql.jdbc.MysqlDataTruncation: Data truncation: Inc
 	at com.mysql.jdbc.ServerPreparedStatement.executeInternal(ServerPreparedStatement.java:693)
 }}}
 
+=Should I care about types?=
+Not so much. Just use the models with types you think is appropriate, and ActiveJDBC together with the driver will handle most of what you need. In case you get a conversion exception from the driver, do a due diligence then.
+
 back to [Features]
