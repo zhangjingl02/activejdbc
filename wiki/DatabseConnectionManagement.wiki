@@ -28,7 +28,7 @@ ActiveJDBC has a concept of a "database". A database is the same as a "database"
 
 =DB and Base=
 
-Opening and closing connections is done with classes Base and DB. The DB class is used in cases where you have more than one database in the system, such as "accounting" and "inventory" in the example above. 
+Opening and closing connections is done with classes Base or DB. The DB class is used in cases where you have more than one database in the system, such as "accounting" and "inventory".
 
 Example:
 
@@ -37,11 +37,36 @@ new DB("inventory").open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test",
 }}}
 In this code example, there is a database connection opened, and attached to a local thread under name "inventory". 
 
-The c
 
-=Models connected to multiple databases=
+The classes Base and DB mirror one another, having exactly the same APIs, except:
+
+  * All methods on DB are instance methods, while all methods on class Base are static ones. 
+  * class DB constructor accepts a DB name, while Base always operates with DB name: "default"
+
+This means that these lines are equivalent:
+{{{
+new DB("default").open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+}}}
+and:
+{{{
+Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+}}}
+
+*Rule:*
+----
+Use Base if you have only one database in the system, otherwise, use DB.
+----
 
 
+=Models associated with multiple databases=
+
+ActiveJDBC allows to have a mix of models in the application representing tables from different databases. By default a model belongs to a database "default", but an association of a model to a database can be overriden with annotation @DbName:
+{{{
+@DbName("corporation")
+public class Employee extends Model {}
+}}}
+
+*Recommendation:* put most models into "default" database, since this will require you to add this annotation to fewer models
 
 
 =Database connection pools=
