@@ -25,4 +25,4 @@
   * [DBMigrations]
   * [DataConversions]
   * [WritingTests]
-  * [BaseDBAndConnectionManagement]
+  * [DatabseConnectionManagement]
