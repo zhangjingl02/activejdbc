@@ -69,6 +69,52 @@ public class Employee extends Model {}
 *Recommendation:* put most models into "default" database, since this will require you to add this annotation to fewer models
 
 
+
+=Multiple database example =
+See sources here: [http://code.google.com/p/activejdbc/source/browse/#svn%2Ftrunk%2Fexamples%2Fmultimple-db-example multimple-db-example].
+
+For this example, we will have two models, one representing a table in Oracle database, while the other in MySQL 
+
+The two models are defined like this:
+{{{
+@DbName("corporation")
+public class Employee extends Model {}
+}}}
+and:
+{{{
+@DbName("university")
+public class Student  extends Model {}
+}}}
+
+and the main class looks like this:
+{{{
+public class Main {
+    public static void main(String[] args) {
+        new DB("corporation").open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+        new DB("university").open("oracle.jdbc.driver.OracleDriver", "jdbc:oracle:thin:@localhost:1521:xe", "activejdbc", "activejdbc");
+
+        Employee.deleteAll();
+        Student.deleteAll();
+
+        Employee.createIt("first_name", "John", "last_name", "Doe");
+        Employee.createIt("first_name", "Jane", "last_name", "Smith");
+
+        Student.createIt("first_name", "Mike", "last_name", "Myers");
+        Student.createIt("first_name", "Steven", "last_name", "Spielberg");
+
+        System.out.println("*** Employees ***");
+        Employee.findAll().dump();
+        System.out.println("*** Students ***");
+        Student.findAll().dump();
+
+        new DB("corporation").close();
+        new DB("university").close();
+    }
+}
+}}}
+
+At the beginning of the application, the two named connections are opened, then we proceed to use the models associated with these connections. At the end of the program, the two named connections are closed. The class DB is super lightweight, and it is OK not to retain a reference to it, but rather to create a new instance each time. If you do want to retain a reference, there is no harm done though.
+
 =Database connection pools=
 
 =Database names=
