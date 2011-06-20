@@ -117,6 +117,19 @@ At the beginning of the application, the two named connections are opened, then 
 
 =Database connection pools=
 
+ActiveJDBC does not maintain connection pools and does not integrate with any pools. Instead, it provides a few DB.open() and Base.open() methods to open connections. If a version of methods used that takes standard JDBC parameters, then no pool is used this is only a convenience method to open a brand new connection, such as:
+{{{
+new DB("corporation").open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+}}}
+
+If however, this call is used:
+{{{
+new DB("corporation").open("jdbc/test");
+}}}
+it will internally use JDNI to lookup a connection. The connection looked up will correspond to configuration if a JNDI resource. Usually if this is called from within a container, the name points to a pooled JNDI DataSource, and as a result represents a connection coming from a pool.
+
+
+
 =Database names=
 = Details =
 
