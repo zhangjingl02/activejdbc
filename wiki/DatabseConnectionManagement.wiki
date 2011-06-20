@@ -1,4 +1,5 @@
-#summary One-sentence summary of this page.
+#summary ActiveJDBC database connection management
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
