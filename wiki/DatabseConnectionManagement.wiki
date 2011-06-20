@@ -129,11 +129,4 @@ new DB("corporation").open("jdbc/test");
 it will internally use JDNI to lookup a connection. The connection looked up will correspond to configuration if a JNDI resource. Usually if this is called from within a container, the name points to a pooled JNDI DataSource, and as a result represents a connection coming from a pool.
 
 
-
-=Database names=
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Back to [Features]
