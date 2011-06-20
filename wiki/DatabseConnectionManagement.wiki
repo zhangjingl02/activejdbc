@@ -21,12 +21,27 @@ Here is a simple program:
 
 On line 1, class Base will open a new connection and attach it to the current thread. This connection will also be marked with name "default".
 
+
 =Database names=
 
+ActiveJDBC has a concept of a "database". A database is the same as a "database" in normal understanding. However, an application can be connected to multiple databases at the same time. In this case. ActiveJDBC allows for assigning different logical names to different databases. For example, one might have an Oracle database with accounting data, and a MySQL database with inventory control data. In this case, you might want to have an "accounting" database and an "inventory" database as logical names assigned to these databases. 
+
+=DB and Base=
+
+Opening and closing connections is done with classes Base and DB. The DB class is used in cases where you have more than one database in the system, such as "accounting" and "inventory" in the example above. 
+
+Example:
+
+{{{
+new DB("inventory").open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+}}}
+In this code example, there is a database connection opened, and attached to a local thread under name "inventory". 
+
+The c
 
 =Models connected to multiple databases=
 
-=DB and Base=
+
 
 
 =Database connection pools=
