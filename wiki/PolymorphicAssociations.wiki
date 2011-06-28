@@ -111,7 +111,7 @@ In some cases, it is not possible to have a fully qualified class name in the "p
 When faced with this problem, you can use annotation to override default behavior:
 {{{
 @BelongsToPolymorphic(
-parents     = {Vehicle.class, Mammal.class}, 
+parents     = { Vehicle.class, Mammal.class}, 
 typeLabels  = {"Vehicle",     "Mammal"} )
 public class Classification extends Model {}
 }}}
