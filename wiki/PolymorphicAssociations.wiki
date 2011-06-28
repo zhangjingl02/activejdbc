@@ -105,6 +105,19 @@ Product p = t.parent(Product.class);
 ...
 }}}
 
+=Override annotations=
+In some cases, it is not possible to have a fully qualified class in the "parent_type" column. This is usually a case when the same table backs a different ORM which also supports polymorphic associations.
+
+When faced with this problem, you can use annotation to override default behavior:
+{{{
+@BelongsToPolymorphic(parents = {Vehicle.class, Mammal.class}, typeLabels = {"Vehicle", "Mammal"} )
+public class Classification extends Model {}
+}}}
+
+This defines polymorphic associations between model Classification, Mammal and Vehicle, such that the "parent_type" column of CLASSIFICATIONS table will contain values "Vehicle" and "Mammal" for corresponding parents from VEHICLE and MAMMAL tables. 
+The order of parent classes and type labels is important, they must correspond to one another.
+
+
 =Conclusion=
 Polymorphic association is a simple mechanism, but the provide a nice pattern for cases that happen much too often in projects. Setting them up and using with ActiveJDBC is so trivial, even a cavemen can do it :)
 
