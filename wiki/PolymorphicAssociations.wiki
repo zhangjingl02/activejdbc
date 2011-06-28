@@ -114,7 +114,7 @@ When faced with this problem, you can use annotation to override default behavio
 public class Classification extends Model {}
 }}}
 
-This defines polymorphic associations between model Classification, Mammal and Vehicle, such that the "parent_type" column of CLASSIFICATIONS table will contain values "Vehicle" and "Mammal" for corresponding parents from VEHICLE and MAMMAL tables. 
+This defines polymorphic associations between models Classification, Mammal and Vehicle, such that the "parent_type" column of CLASSIFICATIONS table will contain values "Vehicle" and "Mammal" for corresponding parent records from VEHICLE and MAMMAL tables. 
 The order of parent classes and type labels is important, they must correspond to one another.
 
 
