@@ -4,6 +4,16 @@
 
 ActiveJDBC requires instrumentation of class files after they are compiled. This is accomplished with an Instrumentation package provided by the project. There are three ways to use it: with a Maven plugin, Ant, and as a standalone Java class (in case you have a non-Maven project)
 
+=What is instrumentation?=
+Instrumentation is byte code manipulation that happens after compile phase. It adds static methods from super class to a subclass. Instrumentation makes writing code like this possible:
+{{{
+List<Person> retirees = Person.where("age >= ?", 65);
+}}}
+
+Without instrumentation, AJ would not be able to know what table to query. This is one reason why other Java ORM APIs are clunky and require a third party class, such as PersistentManager(JPA), Session (Hibernate), etc. 
+
+While instrumentation introduces an additional step in the process, the benefit is a very intuitive and concise API.
+
 =Maven instrumentation plugin =
 The simple usage of a Maven plugin is provided by a Maven ActiveJDBC Simple Example project: 
 
