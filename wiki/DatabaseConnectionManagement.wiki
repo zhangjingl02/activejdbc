@@ -25,7 +25,7 @@ On line 1, class Base will open a new connection and attach it to the current th
 
 =Database names=
 
-ActiveJDBC has a concept of a "database". A database is the same as a "database" in normal understanding. However, an application can be connected to multiple databases at the same time. In this case. ActiveJDBC allows for assigning different logical names to different databases. For example, one might have an Oracle database with accounting data, and a MySQL database with inventory control data. In this case, you might want to have an "accounting" database and an "inventory" database as logical names assigned to these databases. 
+ActiveJDBC has a concept of a "database". A database is the same as a "database" in normal understanding. However, an application can be connected to multiple databases at the same time. In this case, ActiveJDBC allows for assigning different logical names to different databases. For example, one might have an Oracle database with accounting data, and a MySQL database with inventory control data. In this case, you might want to have an "accounting" database and an "inventory" database as logical names assigned to these databases. 
 
 =DB and Base=
 
