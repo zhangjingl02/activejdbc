@@ -43,6 +43,19 @@ By doing so, the framework (internally) creates two associations (User has many 
 
 The design of ActiveJDBC tries to make usage of the APIs as clean and concise as possible. 
 
+
+=Adding children=
+Adding children is the same as in any other association:
+{{{
+user.add(address);
+}}}
+
+As in other associations, the requirement is that the parent record in DB must exist already. This way, a child model is immediately saved to its appropriate table. 
+
+----
+ActiveJDBC is a pass-through model. It does not retain references to child models.
+----
+
 =How to get children=
 Nothing can be simpler:
 {{{
@@ -50,6 +63,7 @@ List<Address> addresses = user.getAll(Address.class);
 }}}
 
 Here the Address.class needs to be passed in because a model User might have many other relationships with models other than Address.class. 
+
 
 =Conditional selection of related objects=
 Sometimes you need to collect children of a model based on a selection criteria:
