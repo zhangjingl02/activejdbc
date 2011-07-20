@@ -55,6 +55,7 @@ As in other associations, the requirement is that the parent record in DB must e
 ----
 ActiveJDBC is a pass-through model. It does not retain references to child models.
 ----
+In case the 'user' model is new (has not been save yet), the method `user.add(child)` will throw an exception.
 
 =How to get children=
 Nothing can be simpler:
