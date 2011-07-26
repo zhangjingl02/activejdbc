@@ -129,5 +129,11 @@ Base.open("jdbc/test");
 }}}
 it will internally use JDNI to lookup a connection. The connection looked up will correspond to configuration if a JNDI resource. Usually if this is called from within a container, the name points to a pooled JNDI DataSource, and as a result represents a connection coming from a pool.
 
+If you want to work directly with some connection pool, you can do so by feeding a datasource to Base/DB class:
+
+{{{
+Base.open(datasourceInstance);
+}}}
+
 
 Back to [Features]
