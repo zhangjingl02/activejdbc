@@ -132,7 +132,7 @@ it will internally use JDNI to lookup a connection. The connection looked up wil
 If you want to work directly with some connection pool, you can do so by feeding a datasource to Base/DB class:
 
 {{{
-Base.open(datasourceInstance);
+new DB("default").open(datasourceInstance);
 }}}
 
 
