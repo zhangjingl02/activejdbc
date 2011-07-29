@@ -43,4 +43,7 @@ public class Message extends Model {
     }    
 }
 }}}
+
+----
 In both cases, the text format for date and timestamp needs to conform to [http://download.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html java.text.SimpleDateFormat]
+----
