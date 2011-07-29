@@ -22,7 +22,7 @@ public class Person extends Model {
 and here how to use it:
 {{{
 Person p = new Person();
-p.set("name", "Marilyn","last_name", "Monroe");
+p.set("first_name", "Marilyn","last_name", "Monroe");
 p.set("dob", "1926/6/1");                     //wrong format
 p.validate();
 System.out.println(p.errors().get("dob"));    //prints out: attribute dob does not conform to format: yyyy-MM-dd
