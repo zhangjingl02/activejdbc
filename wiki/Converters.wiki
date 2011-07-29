@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Converters can convert an attribute from one type to another. They are very similar to [Validations] in logic and are declared the same way inside a static block inside the class. 
+Converters can convert an attribute from one type to another. They are very similar to [Validations] in logic and are declared the same way inside a static block of a class. 
 
 Currently there are two converters available: date converter and time stamp converter. Both allow setting an attribute value in a form of a string with appropriate format.
 
