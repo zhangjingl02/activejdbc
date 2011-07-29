@@ -33,10 +33,14 @@ System.out.println(p.get("dob").getClass()); //prints out: class java.sql.Date
 System.out.println(p.get("dob"));            //prints out: 1926-06-01
 }}}
 
+=Timestamp converter =
 
-
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Timestamp converter is identical to date converter, but converts to `java.sql.Timestamp`. Here is example of declaration:
+{{{
+public class Message extends Model {
+    static{
+        convertTimestamp("send_time", "yyyy.MM.dd G 'at' HH:mm:ss z");
+    }    
+}
+}}}
+In both cases, the text format for date and timestamp needs to conform to [http://download.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html java.text.SimpleDateFormat]
