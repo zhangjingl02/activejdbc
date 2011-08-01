@@ -10,3 +10,7 @@ See this page: [Instrumentation]
 =How to integrate AJ projects into Netbeans?=
 
 Look here: [NetbeansIntegration]
+
+=Does it support database pools?=
+
+YES, please see here: [http://code.google.com/p/activejdbc/wiki/DatabaseConnectionManagement#Database_connection_pools Database connection pools], and also see example of pool usage: [http://code.google.com/p/activejdbc/source/browse/trunk/activejdbc/src/test/java/activejdbc/C3P0PoolTest.java C3P0PoolTest]
