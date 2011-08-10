@@ -71,7 +71,7 @@ CREATE TABLE people (
 
 and you have a migration. To push this migration to the DB, you can execute this command:
 {{{
-mvn verify
+mvn validate
 }}}
 this is because if you look at configuration of Maven plugin, you will see that it is bound to the "veryfy" life cycle. If you want, you can bind it to anther life cycle. 
 
