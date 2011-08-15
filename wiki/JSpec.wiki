@@ -109,7 +109,7 @@ There are three dynamic boolean methods that are supported by JSpec:
   * shouldBe(String)
   * shouldNotBe(String)
 
-For all three methods, the argument is an abridged boolean method of a tested class. This means that of there is such a class Person:
+For all three methods, the argument is an abridged boolean method of a tested class. This means that if there is such a class Person:
 {{{
 class Person{
   private String name;
