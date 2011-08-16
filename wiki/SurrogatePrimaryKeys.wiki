@@ -18,7 +18,7 @@ When an object is looked up from a database, the ID value is populated to approp
 
 When a `save()` method is called, it will generate either an "INSERT" or "UPDATE" query, based on a value of the ID attribute. If the ID == null, it will assume that this model represents a new record and will generate an INSERT, of the ID is not null, then it will generate an UPDATE query. 
 
-A developer could set an ID manually, but this is not s typical usage.
+A developer could set an ID manually, but this is not its typical usage.
 
 
 =Override primary key=
@@ -132,8 +132,8 @@ public class Person extends Model{}
 The usage code, behavior and expectations will be exactly the same with this strategy. As you can see, this seems to be simpler than using triggers, but it has a drawback. Since the same sequence will be used across multiple tables, the number values in a single table could (will) be out of sequence. But.. since this is a surrogate key anyway, it does not matter.
 
 
-=PosgreSQL usage=
-PosgreSQL has a capability similar to that of MySQL, but different syntax - no sequences are required:
+=PostgreSQL usage=
+PostgreSQL has a capability similar to that of MySQL, but different syntax - no sequences are required:
 
 {{{
 CREATE TABLE people (
@@ -145,7 +145,7 @@ CREATE TABLE people (
    updated_at TIMESTAMP);
 }}}
 
-The keyword 'SERIAL' in PostgrerSQL does the same as MySQL's AUTO_INCREMENT
+The keyword 'SERIAL' in PostgreSQL does the same as MySQL's AUTO_INCREMENT
 
 
 
