@@ -28,7 +28,7 @@ In some cases, you might want to accumulate statistical information for actions 
 Registry.instance().getStatisticsQueue().enqueue(new QueryExecutionEvent(query, System.currentTimeMillis() - start));
 }}}
 
-Where "query" is your custom operation, and "start" was a time before it started. The statistical information for your operation will then be accumulated and available for reporting just as any other ActioveJDBC query. 
+Where "query" is your custom operation, and "start" was a time before it started. The statistical information for your operation will then be accumulated and available for reporting just as any other ActiveJDBC query. 
 
 
 Back to [Features]
