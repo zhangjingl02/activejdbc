@@ -109,7 +109,7 @@ as well as other models:
 {{{
 public class Project extends Model{}
 ..
-public class Project extends Model{}
+public class Programmer extends Model{}
 }}}
 
 
