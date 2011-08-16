@@ -2,12 +2,12 @@
 <wiki:toc max_depth="2" />
 
 = Introduction =
-ActiveJDBC polymorphic associations are similar to !ActiveRecord polymorphic associations. YOu can use PM in cases when you have several one to many relationships that you could aggregate because for all the parents, the children are similar. 
+ActiveJDBC polymorphic associations are similar to !ActiveRecord polymorphic associations. You can use PM in cases when you have several one to many relationships that you could aggregate because for all the parents, the children are similar. 
 
-For example, imagine that the you entities in your system that will need to be tagged. For instance, you have products and you have reviews. Both will need to be tagged. A naive implementation would be to create two one to many relationships:
+For example, imagine that the entities in your system that will need to be tagged. For instance, you have products and you have reviews. Both will need to be tagged. A naive implementation would be to create two one to many relationships:
 
   * Product has many !ProductTag(s)
-  * Review has namy !ReviewTag(s)
+  * Review has many !ReviewTag(s)
 
 This will work.. kind of, but this simplified approach will violate a DRY principle because the `PRODUCT_TAG` and `REVIEW_TAG` tables will be identical (except for names!).
 
@@ -34,7 +34,7 @@ Once the setup is done, you can proceed to use the models as normal one to many 
 
 =Operations on polymorphic associations=
 
-Operations themselves are no different from regular ActiveJDBC on to many operations:
+Operations themselves are no different from regular ActiveJDBC one to many operations:
 
 ==Adding and searching for polymorphic children==
 {{{
