@@ -113,20 +113,19 @@ public class Programmer extends Model{}
 }}}
 
 
-You can treat a Many-to-many relationships as two one-to-many relationships. In this case, you could say that a project has many assignments and a programmer has many assignments. Armed with this knowledge, we can write some code:
+You can treat a Many-to-many relationship as two one-to-many relationships. In this case, you could say that a project has many assignments and a programmer has many assignments. Armed with this knowledge, we can write some code:
 
 {{{
 Programmer programmer = Programmer.createIt("first_name", "Jim", "last_name", "Garnoe");
 
-Project project1 = Project.createIt("project_name", "Prove theory of everything");
-Project project2 = Project.createIt("project_name", "Find meaning of life");
-
 Assignment assignment = Assignment.createIt("duration_weeks", 3);
 //use one to many notation here:
 programmer.add(assignment);
+Project project1 = Project.createIt("project_name", "Prove theory of everything");
 project1.add(assignment);
 
 //use many to many notation:
+Project project2 = Project.createIt("project_name", "Find meaning of life");
 programmer.add(project2);
 }}}
 
