@@ -85,6 +85,12 @@ activejdbc.StaleModelException: Failed to update record for model 'class com.acm
 }}}
 This message provides enough detail to understand what happened.
 
+=How optimistic locking is engaged=
+
+The rule is very simple, ActiveJDBC finds `record_version` column and dynamically configures itself to handle optimistic locking. This means that if this column is present, optimistic locking will be engaged, if not present, it will not be engaged. If you did not have this column, and later added it, you need to restart the system, because ActiveJDBC scans database schema at the start. 
+
+Conversely, if you want to turn it off, drop column `record_version` and restart, this will turn it off.
+
 =Conclusion=
 Application developers using optimistic locking should be aware of this exception (even though it is a !RuntimeException) and build controls into their code to intercept and handle them appropriately.
 
