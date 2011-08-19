@@ -20,7 +20,11 @@ Here is a simple program:
 5. }
 }}}
 
-On line 1, class Base will open a new connection and attach it to the current thread. This connection will also be marked with name "default".
+On line 2, class Base will open a new connection and attach it to the current thread. This connection will also be marked with name "default".
+
+On line 3, connection is looked up from the thread and used by the model
+
+On line 4, connection is closed and cleared from thread.
 
 
 =Database names=
