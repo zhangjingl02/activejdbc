@@ -105,7 +105,7 @@ Product p = t.parent(Product.class);
 ...
 }}}
 
-=Override annotations=
+=Override standard parent type values=
 In some cases, it is not possible to have a fully qualified class name in the "parent_type" column. This is usually a case when the same table backs a different ORM which also supports polymorphic associations (!ActiveRecord for example).
 
 When faced with this problem, you can use annotation to override default behavior:
