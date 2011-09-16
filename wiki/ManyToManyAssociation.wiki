@@ -33,6 +33,7 @@ Table PATIENTS:
 }}}
 As you can see, there is nothing in these to tables that tell us that doctors and patinets are somehow related.
 The third table binds entities between the doctors and patients table:
+
 Table DOCTORS_PATIENTS:
 {{{
 +----+-----------+------------+
