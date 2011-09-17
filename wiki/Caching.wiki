@@ -35,10 +35,10 @@ Here is one example:
 
 {{{
 #inside file: activejdbc.properties
-# user OSCache
-cache.manager=ogr.javalite.activejdbc.cache.OSCacheManager
+# use OSCache
+cache.manager=org.javalite.activejdbc.cache.OSCacheManager
 #or EHCache:
-#cache.manager=ogr.javalite.activejdbc.cache.EHCacheManager
+#cache.manager=org.javalite.activejdbc.cache.EHCacheManager
 }}}
 
 Here two things happen: 1. Cache in general is enabled (it is not enabled even if you have @Cached annotations on classes), and 2. AJ will be using OSCacheManager as implementation of cache. 
@@ -89,7 +89,7 @@ User.purgeCache();
 }}}
 
 
-=Cache provider=
+=Cache providers=
 ActiveJDBC has a simple plugin framework for adding cache providers. Currently supports:
   *  [http://www.opensymphony.com/oscache/ OSCache]. OSCache is a known, well tested cache solution for Java, which supports many ways to cache data(memory, file system, clustering, etc.). For more information, see their documentation [http://www.opensymphony.com/oscache/wiki/Documentation.html OSCache Documentation].
   * [http://ehcache.org/ EHCache]. EHCache is high performance popular open source project. For documentation, please refer to: [http://ehcache.org/documentation]
