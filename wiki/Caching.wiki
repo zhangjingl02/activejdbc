@@ -28,8 +28,6 @@ As in other cases, this is a declaration that marks a model as "cachable". If yo
 3078 [main] INFO activejdbc.DB - Query: "SELECT * FROM libraries WHERE id = ?", with parameters: [1], took: 0 milliseconds
 }}}
 
-
-
 =Cache Configuration (AJ Version 1.1 and above)=
 
 The new cache configuration includes providing a cache manager class name in the  file `activejdbc.properties`. This file will have to be on the root of classpath.
@@ -37,8 +35,10 @@ Here is one example:
 
 {{{
 #inside file: activejdbc.properties
-
-cache.manager=activejdbc.cache.OSCacheManager
+# user OSCache
+cache.manager=ogr.javalite.activejdbc.cache.OSCacheManager
+#or EHCache:
+#cache.manager=ogr.javalite.activejdbc.cache.EHCacheManager
 }}}
 
 Here two things happen: 1. Cache in general is enabled (it is not enabled even if you have @Cached annotations on classes), and 2. AJ will be using OSCacheManager as implementation of cache. 
@@ -90,7 +90,9 @@ User.purgeCache();
 
 
 =Cache provider=
-ActiveJDBC has a simple plugin framework for adding cache providers, but currently supports only one: [http://www.opensymphony.com/oscache/ OSCache]. OSCache is a known, well tested cache solution for Java, which supports many ways to cache data(memory, file system, clustering, etc.). For more information, see their documentation [http://www.opensymphony.com/oscache/wiki/Documentation.html OSCache Documentation].
+ActiveJDBC has a simple plugin framework for adding cache providers. Currently supports:
+  *  [http://www.opensymphony.com/oscache/ OSCache]. OSCache is a known, well tested cache solution for Java, which supports many ways to cache data(memory, file system, clustering, etc.). For more information, see their documentation [http://www.opensymphony.com/oscache/wiki/Documentation.html OSCache Documentation].
+  * [http://ehcache.org/ EHCache]. EHCache is high performance popular open source project. For documentation, please refer to: [http://ehcache.org/documentation]
 
 =OSCache configuration for cluster=
 In case your application is deployed in a cluster, and you use caching in ActiveJDBC, you will need to configure clustering. This is necessary so that when your application invokes a destructive action, a proper purge events are distributed in a cluster. OSCache is very efficient, as it does not share the actual data across cluster. Each cluster will have its own caches based on a usage on that cluster. Whenever a purge event is generated on one node in the cluster, this event will be broadcast by OSCache to other nodes, effectively blowing the same caches across entire cluster. These events are lightweight and very fast (UDP, using JGroups).
