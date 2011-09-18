@@ -121,7 +121,7 @@ Please, note that ActiveJDBC does creates named caches in EHCache, but only uses
 =EHCache clustering with Terracotta=
 The EHCache project has excellent documentation found here: [http://ehcache.org/documentation/terracotta/configuration]. Adding clustering support to EHCache is somewhat simple, you have to add a `terracottaConfig` to the `ehcache.xml` file. For more information, please refer to the EHCache documentation.
 
-=OSCache configuration for cluster=
+=OSCache clustering=
 In case your application is deployed in a cluster, and you use caching in ActiveJDBC, you will need to configure clustering. This is necessary so that when your application invokes a destructive action, a proper purge events are distributed in a cluster. OSCache is very efficient, as it does not share the actual data across cluster. Each cluster will have its own caches based on a usage on that cluster. Whenever a purge event is generated on one node in the cluster, this event will be broadcast by OSCache to other nodes, effectively blowing the same caches across entire cluster. These events are lightweight and very fast (UDP, using JGroups).
 For more information on configuration of OSCache clustering, look here:[http://www.opensymphony.com/oscache/wiki/Clustering.html]
 
