@@ -118,7 +118,7 @@ Configuration needs to be provided in a file called `ehcache.xml` found at the r
 
 Please, note that ActiveJDBC does creates named caches in EHCache, but only uses default configuration specified by `defaultCache` element in this file.
 
-=EHCache clustering with Terracotta=
+==EHCache clustering with Terracotta==
 The EHCache project has excellent documentation found here: [http://ehcache.org/documentation/terracotta/configuration]. Adding clustering support to EHCache is somewhat simple, you have to add a `terracottaConfig` to the `ehcache.xml` file. For more information, please refer to the EHCache documentation.
 
 =OSCache clustering=
