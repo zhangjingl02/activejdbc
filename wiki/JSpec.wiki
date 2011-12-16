@@ -103,7 +103,7 @@ null == <null>
 As you can see, the messages not only provide values of tested and expected objects, but also provide their types, which is often important. 
 
 
-==Dynamic boolean methods: shouldHave, shouldBe, shouldNotBe ==
+==shouldHave, shouldBe, shouldNotBe ==
 There are three dynamic boolean methods that are supported by JSpec:
   * shouldHave(String)
   * shouldBe(String)
@@ -184,6 +184,32 @@ a( 2 * 2 == 5).shouldBeFalse();
 ==shouldBeTheSameAs  and shouldNotBeTheSameAs==
 
 These methods are to check if the tested and expected references point to the same (or not) object.
+
+==shouldContain/shouldNotContain==
+
+Tests that an expected value is contained in the tested object. The tested object can be of the following types:
+
+  * Any object - in this case, the string representation of this object is tested to contain a string representation of expected value as a substring. For example, this will pass:
+{{{
+   the("meaning of life is 42").shouldContain("meaning");
+}}}
+
+  * `java.util.List` - in this case, the tested list is expected to contain an expected object. For example, this will pass: 
+{{{
+ a(Arrays.asList(1, 2, 3)).shouldContain(3);
+}}}
+  * `java.util.Map` - in this case, the tested map is expected to contain an object whose key is the expected object. For example, this will pass: 
+{{{
+       Map map = new HashMap();
+       map.put("one", 1);
+       map.put("two", 2);
+       map.put("three", 3);
+       a(map).shouldContain("two");
+}}}
+
+
+The method `shouldNotContain()` is exactly the opposite of shouldContain().
+
 
 ==Expecting difference==
 
