@@ -33,36 +33,63 @@ CREATE TABLE employees (
 ==Add ActiveJDBC  dependency==
 {{{
 
-        <dependency>
-            <groupId>activejdbc</groupId>
-            <artifactId>activejdbc</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>opensymphony</groupId>
-                    <artifactId>oscache</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+            <dependency>
+                <groupId>org.javalite</groupId>
+                <artifactId>activejdbc</artifactId>
+                <version>1.2-SNAPSHOT</version>
+            </dependency>
 }}}
-
-The OSCache is excluded because it is not really used in this simple example. In a real project, if query cache is used, the OSCache dependency will be required.
-
 
 ==Add ActiveJDBC Instrumentation plugin==
 In the plugins section of the POM, add this:
 {{{
-             <plugin>
-                <groupId>activejdbc</groupId>
+            <plugin>
+                <groupId>org.javalite</groupId>
                 <artifactId>activejdbc-instrumentation</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.2-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
-                        <goals><goal>instrument</goal></goals>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
+}}}
+
+==Add repositories for ActiveJDBC snapshots==
+{{{
+
+    <repositories>
+        <repository>
+            <id>sonatype-snapshots</id>
+            <name>Sonatype Snapshot Repo</name>
+            <layout>default</layout>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonatype-plugin-snapshots</id>
+            <name>Sonatype Snapshot Repo</name>
+            <layout>default</layout>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    
 }}}
 
 =Write a model=
