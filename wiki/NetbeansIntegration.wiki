@@ -20,7 +20,7 @@ I will try to describe the process and bottlenecks for such goal
  * Add "-post-compile" target :
  {{{
 <target name="-post-compile">
-    <java classname="activejdbc.instrumentation.Main" failonerror="true">
+    <java classname="org.javaliteactivejdbc.instrumentation.Main" failonerror="true">
         <sysproperty key="outputDirectory" value="${build.classes.dir}"/>
         <classpath>
             <pathelement path="${build.classes.dir}" />
