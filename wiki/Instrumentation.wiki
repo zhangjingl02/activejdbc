@@ -78,7 +78,7 @@ The Instrumentation package is required on the classpath only during instrumenta
 
 =Bare bones Ant script=
 
-This Ant script can be used on any projects in order to speed development. The reason we use this script even on Maven projects is speed. Maven takes time to startup, but this barebones script is almost immediate. You can hook it into IDE to trigger before executing tests:
+This Ant script can be used on any project in order to speed up development. The reason we use this script even on Maven projects is speed. Maven takes time to startup, but this barebones script is almost immediate. You can hook it into IDE to trigger before executing tests:
 {{{
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="C3" default="instrument" basedir=".">
