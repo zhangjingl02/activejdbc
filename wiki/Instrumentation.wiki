@@ -76,5 +76,33 @@ There is an example of a standalone project which does not use any build tool, e
 =Build time classpath=
 The Instrumentation package is required on the classpath only during instrumentation and not required during runtime. For Maven projects, this is automatic. Even it finds its way to the runtime classpath, it will do no harm except for increasing the size.
 
+=Bare bones Ant script=
+
+This Ant script can be used on Maven projects in order to speed development. The reason we use this script even on Maven projects is speed. Maven takes time to startup, but this barebones script is almost immediate. You can hook it into IDE to trigger before executing tests:
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="C3" default="instrument" basedir=".">
+
+    <property name="out.dir" value="target/classes"/>
+
+    <path id="instrument_classpath">
+        <pathelement location="${out.dir}"/>
+        <path location="${user.home}/.m2/repository/org/javalite/activejdbc-instrumentation/1.2-SNAPSHOT/activejdbc-instrumentation-1.2-SNAPSHOT.jar"/>
+        <path location="${user.home}/.m2/repository/javassist/javassist/3.8.0.GA/javassist-3.8.0.GA.jar"/>
+        <path location="${user.home}/.m2/repository/org/javalite/activejdbc/1.2-SNAPSHOT/activejdbc-1.2-SNAPSHOT.jar"/>
+    </path>
+
+    <target name="instrument">
+        <java classname="org.javalite.instrumentation.Main">
+            <sysproperty key="outputDirectory" value="${out.dir}"/>
+            <classpath refid="instrument_classpath"/>
+        </java>
+    </target>
+
+</project>
+}}}
+
+
+
 
 back to [Features]
