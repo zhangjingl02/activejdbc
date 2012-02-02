@@ -14,7 +14,7 @@ By convention, the primary key name is `id`. If your table has a surrogate prima
 When a new object of a model is created, the value of the ID is obviously `null`. 
 When an object is looked up from a database, the ID value is populated to appropriately as any other attributes. 
 
-When a `save()` method is called, it will generate either an "INSERT" or "UPDATE" query, based on a value of the ID attribute. If the ID == null, it will assume that this model represents a new record and will generate an INSERT, of the ID is not null, then it will generate an UPDATE query. 
+When a `save()` method is called, it will generate either an "INSERT" or "UPDATE" query, based on a value of the ID attribute. If the ID == null, it will assume that this model represents a new record and will generate an INSERT, if the ID is not null, then it will generate an UPDATE query. 
 
 A developer could set an ID manually, but this is not its typical usage.
 
