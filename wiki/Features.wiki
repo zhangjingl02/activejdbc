@@ -28,3 +28,4 @@
   * [WritingTests]
   * [DatabaseConnectionManagement]
   * [DeleteCascade]
+  * [Inheritance]
