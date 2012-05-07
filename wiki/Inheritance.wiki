@@ -1,6 +1,11 @@
 #summary ActiveJDBC model inheritance
 <wiki:toc max_depth="2" />
 
+<font color="red"> 
+=WARNING Inheritance implementation has problems, it is not advised to use it at this time=
+</font>
+
+
 #summary One-sentence summary of this page.
 
 = Introduction =
