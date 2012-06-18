@@ -8,7 +8,6 @@ Although ActiveJDBC has advanced features, simple things are very easy. This pag
 
    * Java (obvious)
    * Maven
-   * To see what makes ActiveJDBC tick, you can pull sources: `svn checkout http://activejdbc.googlecode.com/svn/trunk/ activejdbc-read-only`
 
 =Create a standard Maven project structure=
 While ActiveJDBC does not have to be used with Maven, this example (as well as ActiveJDBC itself) was built with Maven. To see the project itself, you can check it out from SVN:
@@ -36,7 +35,7 @@ CREATE TABLE employees (
             <dependency>
                 <groupId>org.javalite</groupId>
                 <artifactId>activejdbc</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>1.4.1</version>
             </dependency>
 }}}
 
@@ -46,7 +45,7 @@ In the plugins section of the POM, add this:
             <plugin>
                 <groupId>org.javalite</groupId>
                 <artifactId>activejdbc-instrumentation</artifactId>
-                <version>1.2-SNAPSHOT</version>
+                <version>1.4.1</version>
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
@@ -56,40 +55,6 @@ In the plugins section of the POM, add this:
                     </execution>
                 </executions>
             </plugin>
-}}}
-
-==Add repositories for ActiveJDBC snapshots==
-{{{
-
-    <repositories>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <name>Sonatype Snapshot Repo</name>
-            <layout>default</layout>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>sonatype-plugin-snapshots</id>
-            <name>Sonatype Snapshot Repo</name>
-            <layout>default</layout>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-    
 }}}
 
 =Write a model=
@@ -105,7 +70,7 @@ Please, note that the name of a table is "employees" - plural, and the name of a
 
 =Open a connection=
 {{{
-Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "root", "p@ssw0rd");
+Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/test", "user1", "xxxxx");
 }}}
 
 Replace the values for the ones that make sense for your environment.
