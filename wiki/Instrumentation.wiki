@@ -24,7 +24,7 @@ Specifically, the plugin is added to a pom like this:
            <plugin>
                 <groupId>activejdbc</groupId>
                 <artifactId>activejdbc-instrumentation</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>1.4.1</version>
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
