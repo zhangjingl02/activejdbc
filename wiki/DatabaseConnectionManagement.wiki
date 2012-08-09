@@ -144,7 +144,7 @@ new DB("default").open(datasourceInstance);
 
 In most cases you do not need to worry about this. However, for Oracle and PostgreSQL, some schema elements may leak into your account if a schema is not specified. If you find that your model for instance has an attribute(column) that is not part of this table description, it means that the DB mixed in this column from another table (public schema) that has the same name as your table. 
 
-In a case like this, you need to specify a schema for a database. If you use a default database ( see "Multiple database example" above, and you do not use DbName() annotation), simply add this system property:
+In a case like this, you need to specify a schema for a database. If you use a default database ( see "Multiple database example" above, and you do not use !DbName() annotation), simply add this system property:
 {{{
 -Dactivejdbc.default.schema=myschema
 }}}
