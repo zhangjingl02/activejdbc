@@ -102,6 +102,13 @@ This Ant script can be used on any project in order to speed up development. The
 </project>
 }}}
 
+=Eclipse integration=
+Please, see: https://groups.google.com/forum/?fromgroups=#!searchin/activejdbc-group/eclipse/activejdbc-group/xQ5gUSnCalc/ZuuPrHsriuAJ
+
+=Netbeans integration=
+
+Please, see [Netbeans]
+
 
 
 
