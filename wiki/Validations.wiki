@@ -164,7 +164,7 @@ public class CustomValidator extends ValidatorAdapter{
       //perform whatever validation logic, then add errors to model if validation did not pass:
 
       if(!valid)
-         m.addValidator("custom_error", this);
+         m.addValidator(this, "custom_error");
     }
 }
 }}}
