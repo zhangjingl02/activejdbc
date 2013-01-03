@@ -210,5 +210,59 @@ An example of generated JSON:
 
 as you can see, the two users were generated. Since the `include()` was used, the corresponding children from the ADDRESSES table were queried too for their JSON. 
 
+=Hydrate ActiveJDBC models from JSON =
+
+Sometimes  you need to do the opposite of generating JSON. For instance,  when I build webservices using ActiveWeb, often a JSON document is posted in a web request, and it needs to be serialized to a model. This functionality is not built into ActiveJDBC because this would require adding a dependency to parse JSON, but it is not needed by most projects. The solution is super simple: add a class with this code to your project:
+
+<code>
+import org.codehaus.jackson.map.ObjectMapper;
+import java.io.IOException;
+import java.util.Map;
+
+public class JsonHelper {
+    public static Map toMap(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(json, Map.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static Map[] toMaps(String json) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(json, Map[].class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+</code>
+
+then add Jackson dependency:
+{{{
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-core-asl</artifactId>
+        <version>1.8.2</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.8.2</version>
+        <scope>test</scope>
+      </dependency>
+}}}
+
+After this, it is trivial to write code like this:
+
+<code>
+Person p = new Person();
+String personJson = ... // initialized from web request or another source
+p.fromMap(JsonHelper.toMap(personJson));
+</code>
 
 Back to [Features]
