@@ -29,5 +29,5 @@
   * [DatabaseConnectionManagement]
   * [DeleteCascade]
   * [Inheritance]
-  * [IDE Integrations]
+  * [IDE_Integrations]
    * [NetbeansIntegration]
