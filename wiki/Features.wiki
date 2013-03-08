@@ -30,4 +30,4 @@
   * [DeleteCascade]
   * [Inheritance]
   * [IDE Integrations]
-  ** [NetbeansIntegration]
+   * [NetbeansIntegration]
