@@ -107,7 +107,7 @@ Please, see: https://groups.google.com/forum/?fromgroups=#!searchin/activejdbc-g
 
 =Netbeans integration=
 
-Please, see [Netbeans]
+Please, see [NetbeansIntegration]
 
 
 
