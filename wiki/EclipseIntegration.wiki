@@ -6,4 +6,4 @@ Please, see:
 
   * https://groups.google.com/forum/?fromgroups=#!topic/activejdbc-group/h4xRn-p9Bbw
 
-  *https://groups.google.com/forum/?fromgroups=#!topic/activejdbc-group/dMg47VNN64E
+  * https://groups.google.com/forum/?fromgroups=#!topic/activejdbc-group/dMg47VNN64E
