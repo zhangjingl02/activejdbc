@@ -21,7 +21,7 @@ List<Person> people = People.findAll().limit(40).offset(20);
 
 The code snippet above will find all return 40 records, starting with the 41st record, inclusive.
 
-= Ordering results (putting all together Fluent Interfaces - style ) =
+= Ordering results (putting all together Fluent Interfaces style ) =
 
 Usually, you would limit, offset and order results in one query:
 
