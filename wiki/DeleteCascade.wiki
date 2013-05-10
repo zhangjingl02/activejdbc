@@ -16,7 +16,7 @@ deleteCascade();
 }}}
 
 It deletes current record from associated table, as well as children. Deletes current model and all of its child and many to many associations. This is not a high performance method, as it will load every row into a model instance before deleting, effectively calling (N + 1) per table queries to the DB, one to select all the associated records (per table), and one delete statement per record. Use it for small data sets.
-In cases of simple one to many and polymorphic associations, things are as expected, a parent is deleted an all children are deleted as well, but in more complicated cases, this method will walk entire three of associated tables, sometimes coming back to the same one where it all started. It will follow associations of children and their associations too; consider this a true cascade delete with all implications (circular dependencies, referential integrity constraints, potential performance bottlenecks, etc.)
+In cases of simple one to many and polymorphic associations, things are as expected, a parent is deleted an all children are deleted as well, but in more complicated cases, this method will walk entire tree of associated tables, sometimes coming back to the same one where it all started. It will follow associations of children and their associations too; consider this a true cascade delete with all implications (circular dependencies, referential integrity constraints, potential performance bottlenecks, etc.)
 
 Imagine a situation where you have DOCTORS and PATIENTS in many to many relationship (with DOCTORS_PATIENTS table as a join table), and in addition PATIENTS and PRESCRIPTIONS in one to many relationship, where a patient might have many prescriptions:
 {{{
