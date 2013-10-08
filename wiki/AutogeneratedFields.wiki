@@ -5,6 +5,10 @@
 
 Like !ActiveRecord, ActiveJDBC will enter special values into  columns that are named according to conventions. 
 
+<font color=red>
+NOTE: Name of this page is misleading. ActiveJDBC does not generate any columns. It is using them if they are present
+</font>
+
 =created_at=
 If a table that a model represents has this column (and the column type is one that corresponds to {{{java.sql.Timestamp}}}), then a model will enter value into this column only once when a new record is created. Successive updates of even new model instances that represent this specific record will not touch data in this column, hence your application logic can rely in this value.
 
