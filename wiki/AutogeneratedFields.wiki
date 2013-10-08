@@ -6,7 +6,7 @@
 Like !ActiveRecord, ActiveJDBC will enter special values into  columns that are named according to conventions. 
 
 <font color=red>
-NOTE: Name of this page is misleading. ActiveJDBC does not generate any columns. It is using them if they are present
+NOTE: Name of this page is misleading. ActiveJDBC does not generate any columns. It uses them if they are present
 </font>
 
 =created_at=
